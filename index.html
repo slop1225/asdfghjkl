@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shadowban Monitor</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f1117;
+      --card: #1a1d27;
+      --border: #2a2d3a;
+      --text: #e8eaed;
+      --muted: #8b90a0;
+      --good: #22c55e;
+      --bad: #ef4444;
+      --accent: #6366f1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 2rem 1rem;
+    }
+    .container { max-width: 1200px; margin: 0 auto; }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    h1 { font-size: 1.75rem; font-weight: 700; }
+    h1 span { color: var(--accent); }
+    .status-bar { font-size: 0.875rem; color: var(--muted); }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 1.25rem;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem;
+    }
+    .card.banned { border-color: var(--bad); }
+    .card.clear { border-color: var(--good); }
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+    .username { font-weight: 600; font-size: 1.1rem; }
+    .username a { color: inherit; text-decoration: none; }
+    .username a:hover { color: var(--accent); }
+    .badge {
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+    .badge.banned { background: rgba(239,68,68,0.15); color: var(--bad); }
+    .badge.clear { background: rgba(34,197,94,0.15); color: var(--good); }
+    .badge.unknown { background: rgba(139,144,160,0.15); color: var(--muted); }
+    .duration { font-size: 1.5rem; font-weight: 700; margin: 0.5rem 0; }
+    .duration.banned { color: var(--bad); }
+    .duration.clear { color: var(--good); }
+    .meta { font-size: 0.8rem; color: var(--muted); }
+    .tests {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+      margin-top: 1rem;
+      font-size: 0.8rem;
+    }
+    .test-item { display: flex; align-items: center; gap: 0.4rem; }
+    .test-dot { width: 6px; height: 6px; border-radius: 50%; }
+    .test-dot.ok { background: var(--good); }
+    .test-dot.bad { background: var(--bad); }
+    .test-dot.unk { background: var(--muted); }
+    .history-section { margin-top: 1.5rem; }
+    .history-section h3 { font-size: 0.9rem; margin-bottom: 0.75rem; color: var(--muted); font-weight: 500; }
+    .history-list { max-height: 220px; overflow-y: auto; font-size: 0.8rem; }
+    .history-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.4rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .history-item:last-child { border-bottom: none; }
+    .footer { text-align: center; font-size: 0.75rem; color: var(--muted); margin-top: 2rem; }
+    .footer a { color: var(--accent); text-decoration: none; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Shadowban <span>Monitor</span></h1>
+      <div class="status-bar" id="lastUpdated">Loading history…</div>
+    </header>
+    <div class="grid" id="accountsGrid"></div>
+    <div class="footer">
+      Background checks via GitHub Actions · 
+      <a href="https://shadowban.yuzurisa.com/" target="_blank">API</a>
+    </div>
+  </div>
+
+  <script>
+    const ACCOUNTS = [
+      { handle: 'keepsayinitkris', display: '@keepsayinitkris' },
+      { handle: 'insanejarona', display: '@insanejarona' },
+      { handle: 'keptsayinitkris', display: '@keptsayinitkris' }
+    ];
+
+    function getBanDetails(tests) {
+      if (!tests) return [];
+      const d = [];
+      d.push({ name: 'Search', banned: tests.search === false ? true : (tests.search ? false : null) });
+      d.push({ name: 'Suggestion', banned: tests.typeahead === false ? true : (tests.typeahead === true ? false : null) });
+      d.push({ name: 'Ghost', banned: tests.ghost?.ban === true ? true : (tests.ghost?.ban === false ? false : null) });
+      d.push({ name: 'Reply', banned: tests.more_replies?.ban === true ? true : (tests.more_replies?.ban === false ? false : null) });
+      return d;
+    }
+
+    function calculateDuration(entries) {
+      if (!entries || entries.length === 0) return { duration: null, since: null, isBanned: null };
+      const latest = entries[entries.length - 1];
+      if (!latest.banned) return { duration: 0, since: null, isBanned: false };
+
+      let streakStart = latest.timestamp;
+      for (let i = entries.length - 1; i >= 0; i--) {
+        if (entries[i].banned) streakStart = entries[i].timestamp;
+        else break;
+      }
+      return { duration: Date.now() - streakStart, since: streakStart, isBanned: true };
+    }
+
+    function formatDuration(ms) {
+      if (ms == null) return '—';
+      if (ms === 0) return 'Clear';
+      const m = Math.floor(ms / 60000);
+      const h = Math.floor(m / 60);
+      const d = Math.floor(h / 24);
+      if (d > 0) return `${d}d ${h % 24}h`;
+      if (h > 0) return `${h}h ${m % 60}m`;
+      return `${m}m`;
+    }
+
+    function formatTime(ts) {
+      return new Date(ts).toLocaleString(undefined, { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+    }
+
+    async function load() {
+      try {
+        const res = await fetch('data/history.json?t=' + Date.now());
+        const history = await res.json();
+
+        const last = history.lastUpdated
+          ? new Date(history.lastUpdated).toLocaleString()
+          : 'Never';
+        document.getElementById('lastUpdated').textContent = `Last updated: ${last}`;
+
+        const grid = document.getElementById('accountsGrid');
+        grid.innerHTML = ACCOUNTS.map(acc => {
+          const entries = history.accounts?.[acc.handle] || [];
+          const latest = entries[entries.length - 1];
+          const duration = calculateDuration(entries);
+          const details = latest?.tests ? getBanDetails(latest.tests) : [];
+
+          let statusClass = 'unknown', statusText = 'Unknown';
+          if (latest?.error) statusText = 'Error';
+          else if (latest && !latest.exists) statusText = 'Not Found';
+          else if (duration.isBanned) { statusClass = 'banned'; statusText = 'Shadowbanned'; }
+          else if (duration.isBanned === false) { statusClass = 'clear'; statusText = 'Clear'; }
+
+          const historyHtml = entries.slice(-10).reverse().map(e => `
+            <div class="history-item">
+              <span>${formatTime(e.timestamp)}</span>
+              <span style="color:${e.banned ? 'var(--bad)' : 'var(--good)'};font-weight:500">
+                ${e.banned ? 'Banned' : 'Clear'}
+              </span>
+            </div>
+          `).join('');
+
+          return `
+            <div class="card ${statusClass}">
+              <div class="card-header">
+                <div class="username"><a href="https://x.com/${acc.handle}" target="_blank">${acc.display}</a></div>
+                <span class="badge ${statusClass}">${statusText}</span>
+              </div>
+              <div class="duration ${duration.isBanned ? 'banned' : 'clear'}">${formatDuration(duration.duration)}</div>
+              <div class="meta">
+                ${duration.isBanned && duration.since ? `Banned since ${formatTime(duration.since)}` : 
+                  duration.isBanned === false ? 'No active shadowban' : ''}
+              </div>
+              <div class="tests">
+                ${details.map(d => `
+                  <div class="test-item">
+                    <span class="test-dot ${d.banned === true ? 'bad' : d.banned === false ? 'ok' : 'unk'}"></span>
+                    ${d.name}
+                  </div>
+                `).join('')}
+              </div>
+              <div class="history-section">
+                <h3>Recent Checks</h3>
+                <div class="history-list">${historyHtml || '<div class="meta">No data yet</div>'}</div>
+              </div>
+            </div>
+          `;
+        }).join('');
+      } catch (err) {
+        document.getElementById('accountsGrid').innerHTML = `<div class="card">Failed to load history: ${err.message}</div>`;
+      }
+    }
+
+    load();
+    // Refresh the display every minute so durations stay accurate
+    setInterval(load, 60 * 1000);
+  </script>
+</body>
+</html>
