@@ -53,28 +53,22 @@ def main():
         tests = data.get("tests")
         banned = is_banned(tests)
 
-        # Only record if we got a real result (not an API error)
-        if data.get("error") and banned is None:
-            print(f"Skipping {handle}: {data.get('error')}")
-            continue
-
         entry = {
             "timestamp": now,
             "banned": banned,
             "exists": (data.get("profile") or {}).get("exists", False),
             "tests": tests,
             "error": data.get("error"),
+            "source": "scheduled",
         }
         history.setdefault("accounts", {}).setdefault(handle, []).append(entry)
         history["accounts"][handle] = history["accounts"][handle][-MAX_ENTRIES:]
         any_success = True
 
-    if any_success:
-        history["lastUpdated"] = now
-        HISTORY_PATH.write_text(json.dumps(history, indent=2))
-        print(f"Updated history at {now}")
-    else:
-        print("No successful checks — history left unchanged")
+    # Always write if we attempted checks (even if all errored)
+    history["lastUpdated"] = now
+    HISTORY_PATH.write_text(json.dumps(history, indent=2))
+    print(f"Updated history at {now}")
 
 if __name__ == "__main__":
     main()
