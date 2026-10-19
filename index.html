@@ -37,6 +37,19 @@
     h1 { font-size: 1.75rem; font-weight: 700; }
     h1 span { color: var(--accent); }
     .status-bar { font-size: 0.875rem; color: var(--muted); }
+    .controls { display: flex; gap: 0.5rem; align-items: center; }
+    button {
+      background: var(--accent);
+      border: none;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.875rem;
+      font-weight: 500;
+    }
+    button:hover { opacity: 0.9; }
+    button:disabled { opacity: 0.5; cursor: not-allowed; }
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
@@ -104,6 +117,9 @@
     <header>
       <h1>Shadowban <span>Monitor</span></h1>
       <div class="status-bar" id="lastUpdated">Loading history…</div>
+      <div class="controls">
+        <button id="checkNow">Check Now</button>
+      </div>
     </header>
     <div class="grid" id="accountsGrid"></div>
     <div class="footer">
@@ -118,6 +134,57 @@
       { handle: 'insanejarona', display: '@insanejarona' },
       { handle: 'keptsayinitkris', display: '@keptsayinitkris' }
     ];
+
+    const API_BASE = 'https://shadowban-api.yuzurisa.com:444';
+    let currentHistory = null;
+
+    function isBanned(tests) {
+      if (!tests) return null;
+      const searchBan = tests.search === false;
+      const suggestionBan = tests.typeahead === false;
+      const ghostBan = tests.ghost?.ban === true;
+      const replyDeboost = tests.more_replies?.ban === true;
+      return searchBan || suggestionBan || ghostBan || replyDeboost;
+    }
+
+    async function checkNow() {
+      const btn = document.getElementById('checkNow');
+      btn.disabled = true;
+      btn.textContent = 'Checking…';
+
+      try {
+        const results = await Promise.all(ACCOUNTS.map(async acc => {
+          const res = await fetch(`${API_BASE}/${acc.handle}`);
+          const data = await res.json();
+          return {
+            handle: acc.handle,
+            entry: {
+              timestamp: Date.now(),
+              banned: isBanned(data.tests),
+              exists: data.profile?.exists ?? false,
+              tests: data.tests,
+              error: data.error || null
+            }
+          };
+        }));
+
+        // Temporarily inject the fresh results into the history for display
+        if (!currentHistory) currentHistory = { accounts: {}, lastUpdated: Date.now() };
+        for (const r of results) {
+          if (!currentHistory.accounts[r.handle]) currentHistory.accounts[r.handle] = [];
+          currentHistory.accounts[r.handle].push(r.entry);
+        }
+        currentHistory.lastUpdated = Date.now();
+
+        render(currentHistory);
+        document.getElementById('lastUpdated').textContent = 'Just checked (local) · ' + new Date().toLocaleTimeString();
+      } catch (err) {
+        alert('Check failed: ' + err.message);
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Check Now';
+      }
+    }
 
     function getBanDetails(tests) {
       if (!tests) return [];
@@ -160,65 +227,70 @@
     async function load() {
       try {
         const res = await fetch('data/history.json?t=' + Date.now());
-        const history = await res.json();
-
-        const last = history.lastUpdated
-          ? new Date(history.lastUpdated).toLocaleString()
-          : 'Never';
-        document.getElementById('lastUpdated').textContent = `Last updated: ${last}`;
-
-        const grid = document.getElementById('accountsGrid');
-        grid.innerHTML = ACCOUNTS.map(acc => {
-          const entries = history.accounts?.[acc.handle] || [];
-          const latest = entries[entries.length - 1];
-          const duration = calculateDuration(entries);
-          const details = latest?.tests ? getBanDetails(latest.tests) : [];
-
-          let statusClass = 'unknown', statusText = 'Unknown';
-          if (latest?.error) statusText = 'Error';
-          else if (latest && !latest.exists) statusText = 'Not Found';
-          else if (duration.isBanned) { statusClass = 'banned'; statusText = 'Shadowbanned'; }
-          else if (duration.isBanned === false) { statusClass = 'clear'; statusText = 'Clear'; }
-
-          const historyHtml = entries.slice(-10).reverse().map(e => `
-            <div class="history-item">
-              <span>${formatTime(e.timestamp)}</span>
-              <span style="color:${e.banned ? 'var(--bad)' : 'var(--good)'};font-weight:500">
-                ${e.banned ? 'Banned' : 'Clear'}
-              </span>
-            </div>
-          `).join('');
-
-          return `
-            <div class="card ${statusClass}">
-              <div class="card-header">
-                <div class="username"><a href="https://x.com/${acc.handle}" target="_blank">${acc.display}</a></div>
-                <span class="badge ${statusClass}">${statusText}</span>
-              </div>
-              <div class="duration ${duration.isBanned ? 'banned' : 'clear'}">${formatDuration(duration.duration)}</div>
-              <div class="meta">
-                ${duration.isBanned && duration.since ? `Banned since ${formatTime(duration.since)}` : 
-                  duration.isBanned === false ? 'No active shadowban' : ''}
-              </div>
-              <div class="tests">
-                ${details.map(d => `
-                  <div class="test-item">
-                    <span class="test-dot ${d.banned === true ? 'bad' : d.banned === false ? 'ok' : 'unk'}"></span>
-                    ${d.name}
-                  </div>
-                `).join('')}
-              </div>
-              <div class="history-section">
-                <h3>Recent Checks</h3>
-                <div class="history-list">${historyHtml || '<div class="meta">No data yet</div>'}</div>
-              </div>
-            </div>
-          `;
-        }).join('');
+        currentHistory = await res.json();
+        render(currentHistory);
       } catch (err) {
         document.getElementById('accountsGrid').innerHTML = `<div class="card">Failed to load history: ${err.message}</div>`;
       }
     }
+
+    function render(history) {
+      const last = history.lastUpdated
+        ? new Date(history.lastUpdated).toLocaleString()
+        : 'Never';
+      document.getElementById('lastUpdated').textContent = `Last updated: ${last}`;
+
+      const grid = document.getElementById('accountsGrid');
+      grid.innerHTML = ACCOUNTS.map(acc => {
+        const entries = history.accounts?.[acc.handle] || [];
+        const latest = entries[entries.length - 1];
+        const duration = calculateDuration(entries);
+        const details = latest?.tests ? getBanDetails(latest.tests) : [];
+
+        let statusClass = 'unknown', statusText = 'Unknown';
+        if (latest?.error) statusText = 'Error';
+        else if (latest && !latest.exists) statusText = 'Not Found';
+        else if (duration.isBanned) { statusClass = 'banned'; statusText = 'Shadowbanned'; }
+        else if (duration.isBanned === false) { statusClass = 'clear'; statusText = 'Clear'; }
+
+        const historyHtml = entries.slice(-10).reverse().map(e => `
+          <div class="history-item">
+            <span>${formatTime(e.timestamp)}</span>
+            <span style="color:${e.banned ? 'var(--bad)' : 'var(--good)'};font-weight:500">
+              ${e.banned ? 'Banned' : 'Clear'}
+            </span>
+          </div>
+        `).join('');
+
+        return `
+          <div class="card ${statusClass}">
+            <div class="card-header">
+              <div class="username"><a href="https://x.com/${acc.handle}" target="_blank">${acc.display}</a></div>
+              <span class="badge ${statusClass}">${statusText}</span>
+            </div>
+            <div class="duration ${duration.isBanned ? 'banned' : 'clear'}">${formatDuration(duration.duration)}</div>
+            <div class="meta">
+              ${duration.isBanned && duration.since ? `Banned since ${formatTime(duration.since)}` : 
+                duration.isBanned === false ? 'No active shadowban' : ''}
+            </div>
+            <div class="tests">
+              ${details.map(d => `
+                <div class="test-item">
+                  <span class="test-dot ${d.banned === true ? 'bad' : d.banned === false ? 'ok' : 'unk'}"></span>
+                  ${d.name}
+                </div>
+              `).join('')}
+            </div>
+            <div class="history-section">
+              <h3>Recent Checks</h3>
+              <div class="history-list">${historyHtml || '<div class="meta">No data yet</div>'}</div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    document.getElementById('checkNow').addEventListener('click', checkNow);
 
     load();
     // Refresh the display every minute so durations stay accurate
