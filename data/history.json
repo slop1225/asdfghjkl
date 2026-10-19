@@ -1,8 +1,71 @@
 {
   "accounts": {
-    "keepsayinitkris": [],
-    "insanejarona": [],
-    "keptsayinitkris": []
+    "keepsayinitkris": [
+      {
+        "timestamp": 1792447697885,
+        "banned": true,
+        "exists": true,
+        "tests": {
+          "search": false,
+          "typeahead": false,
+          "ghost": {
+            "ban": false,
+            "tweet": "2112224699547591061",
+            "in_reply_to": "2112254490040803790"
+          },
+          "more_replies": {
+            "ban": false,
+            "tweet": "2112224699547591061",
+            "in_reply_to": "2112254490040803790"
+          }
+        },
+        "error": null
+      }
+    ],
+    "insanejarona": [
+      {
+        "timestamp": 1792447697885,
+        "banned": true,
+        "exists": true,
+        "tests": {
+          "search": false,
+          "typeahead": false,
+          "ghost": {
+            "ban": false,
+            "tweet": "2110638428366803242",
+            "in_reply_to": "2111793678855602670"
+          },
+          "more_replies": {
+            "ban": false,
+            "tweet": "2110638428366803242",
+            "in_reply_to": "2111793678855602670"
+          }
+        },
+        "error": null
+      }
+    ],
+    "keptsayinitkris": [
+      {
+        "timestamp": 1792447697885,
+        "banned": false,
+        "exists": true,
+        "tests": {
+          "search": "_implied_good",
+          "typeahead": true,
+          "ghost": {
+            "ban": false,
+            "tweet": "2111212939558691265",
+            "in_reply_to": "2111218202365788259"
+          },
+          "more_replies": {
+            "ban": false,
+            "tweet": "2111212939558691265",
+            "in_reply_to": "2111218202365788259"
+          }
+        },
+        "error": null
+      }
+    ]
   },
-  "lastUpdated": null
+  "lastUpdated": 1792447697885
 }
