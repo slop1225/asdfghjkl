@@ -154,25 +154,44 @@
 
       try {
         const results = await Promise.all(ACCOUNTS.map(async acc => {
-          const res = await fetch(`${API_BASE}/${acc.handle}`);
-          const data = await res.json();
-          return {
-            handle: acc.handle,
-            entry: {
-              timestamp: Date.now(),
-              banned: isBanned(data.tests),
-              exists: data.profile?.exists ?? false,
-              tests: data.tests,
-              error: data.error || null
+          try {
+            const res = await fetch(`${API_BASE}/${acc.handle}`);
+            const text = await res.text();
+            if (!text.trim().startsWith('{')) {
+              throw new Error('API returned non-JSON (likely temporary error)');
             }
-          };
+            const data = JSON.parse(text);
+            return {
+              handle: acc.handle,
+              entry: {
+                timestamp: Date.now(),
+                banned: isBanned(data.tests),
+                exists: data.profile?.exists ?? false,
+                tests: data.tests,
+                error: data.error || null
+              }
+            };
+          } catch (e) {
+            return {
+              handle: acc.handle,
+              entry: {
+                timestamp: Date.now(),
+                banned: null,
+                exists: false,
+                tests: null,
+                error: e.message
+              }
+            };
+          }
         }));
 
-        // Temporarily inject the fresh results into the history for display
         if (!currentHistory) currentHistory = { accounts: {}, lastUpdated: Date.now() };
         for (const r of results) {
           if (!currentHistory.accounts[r.handle]) currentHistory.accounts[r.handle] = [];
-          currentHistory.accounts[r.handle].push(r.entry);
+          // Only push if we got a real banned true/false (skip pure errors)
+          if (r.entry.banned !== null || r.entry.error) {
+            currentHistory.accounts[r.handle].push(r.entry);
+          }
         }
         currentHistory.lastUpdated = Date.now();
 
@@ -194,6 +213,21 @@
       d.push({ name: 'Ghost', banned: tests.ghost?.ban === true ? true : (tests.ghost?.ban === false ? false : null) });
       d.push({ name: 'Reply', banned: tests.more_replies?.ban === true ? true : (tests.more_replies?.ban === false ? false : null) });
       return d;
+    }
+
+    function countTransitions(entries) {
+      let shadow = 0;
+      let unshadow = 0;
+      let prev = null;
+      for (const e of entries) {
+        if (e.banned === null || e.banned === undefined) continue;
+        if (prev !== null && e.banned !== prev) {
+          if (e.banned) shadow++;
+          else unshadow++;
+        }
+        prev = e.banned;
+      }
+      return { shadow, unshadow };
     }
 
     function calculateDuration(entries) {
@@ -246,6 +280,7 @@
         const latest = entries[entries.length - 1];
         const duration = calculateDuration(entries);
         const details = latest?.tests ? getBanDetails(latest.tests) : [];
+        const counts = countTransitions(entries);
 
         let statusClass = 'unknown', statusText = 'Unknown';
         if (latest?.error) statusText = 'Error';
@@ -256,8 +291,8 @@
         const historyHtml = entries.slice(-10).reverse().map(e => `
           <div class="history-item">
             <span>${formatTime(e.timestamp)}</span>
-            <span style="color:${e.banned ? 'var(--bad)' : 'var(--good)'};font-weight:500">
-              ${e.banned ? 'Banned' : 'Clear'}
+            <span style="color:${e.banned ? 'var(--bad)' : e.banned === false ? 'var(--good)' : 'var(--muted)'};font-weight:500">
+              ${e.banned ? 'Banned' : e.banned === false ? 'Clear' : 'Error'}
             </span>
           </div>
         `).join('');
@@ -272,6 +307,9 @@
             <div class="meta">
               ${duration.isBanned && duration.since ? `Banned since ${formatTime(duration.since)}` : 
                 duration.isBanned === false ? 'No active shadowban' : ''}
+            </div>
+            <div class="meta" style="margin-top:0.4rem;font-weight:600;color:var(--text)">
+              shadow <span style="color:var(--bad)">${counts.shadow}</span> / unshadow <span style="color:var(--good)">${counts.unshadow}</span>
             </div>
             <div class="tests">
               ${details.map(d => `
