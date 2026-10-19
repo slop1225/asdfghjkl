@@ -88,27 +88,19 @@
     .duration.partial { color: #f59e0b; cursor: help; }
     .meta { font-size: 0.8rem; color: var(--muted); }
     .secret-img {
-      width: 48px;
-      height: 48px;
+      width: 120px;
+      height: 120px;
       cursor: pointer;
-      border-radius: 6px;
+      border-radius: 8px;
       image-rendering: pixelated;
       border: 1px solid var(--border);
       transition: transform 0.15s;
+      display: block;
+      margin: 2rem auto 0;
     }
-    .secret-img:hover { transform: scale(1.08); }
-    #videoContainer {
-      display: none;
-      margin-top: 1rem;
-      text-align: center;
-    }
-    #videoContainer iframe {
-      width: 100%;
-      max-width: 560px;
-      height: 315px;
-      border: none;
-      border-radius: 8px;
-    }
+    .secret-img:hover { transform: scale(1.05); }
+    .manual-section { margin-top: 0.75rem; }
+    .manual-section h3 { font-size: 0.8rem; color: var(--muted); margin-bottom: 0.4rem; }
     .tests {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -141,12 +133,12 @@
       <h1>Shadowban <span>Monitor</span></h1>
       <div class="status-bar" id="lastUpdated">Loading history…</div>
       <div class="controls">
-        <img src="img/register.png" alt="" class="secret-img" id="secretImg" title="Click">
         <button id="checkNow">Check Now</button>
       </div>
     </header>
-    <div id="videoContainer"></div>
     <div class="grid" id="accountsGrid"></div>
+    <img src="img/register.png" alt="" class="secret-img" id="secretImg" title="Click">
+    <audio id="sound" src="img/sound.mp3" preload="auto"></audio>
     <div class="footer">
       Background checks via GitHub Actions · 
       <a href="https://shadowban.yuzurisa.com/" target="_blank">API</a>
@@ -162,6 +154,11 @@
 
     const API_BASE = 'https://shadowban-api.yuzurisa.com:444';
     let currentHistory = null;
+    let manualHistory = JSON.parse(localStorage.getItem('manualHistory') || '{}');
+
+    function saveManual() {
+      localStorage.setItem('manualHistory', JSON.stringify(manualHistory));
+    }
 
     function isBanned(tests) {
       if (!tests) return null;
@@ -212,12 +209,11 @@
 
         if (!currentHistory) currentHistory = { accounts: {}, lastUpdated: Date.now() };
         for (const r of results) {
-          if (!currentHistory.accounts[r.handle]) currentHistory.accounts[r.handle] = [];
-          // Only push if we got a real banned true/false (skip pure errors)
-          if (r.entry.banned !== null || r.entry.error) {
-            currentHistory.accounts[r.handle].push(r.entry);
-          }
+          if (!manualHistory[r.handle]) manualHistory[r.handle] = [];
+          manualHistory[r.handle].push({ ...r.entry, source: 'manual' });
+          manualHistory[r.handle] = manualHistory[r.handle].slice(-50);
         }
+        saveManual();
         currentHistory.lastUpdated = Date.now();
 
         render(currentHistory);
@@ -387,7 +383,17 @@
           hoverTitle = parts.join(' · ');
         }
 
-        const historyHtml = entries.slice(-10).reverse().map(e => `
+        const historyHtml = entries.slice(-8).reverse().map(e => `
+          <div class="history-item">
+            <span>${formatTime(e.timestamp)}</span>
+            <span style="color:${e.banned ? 'var(--bad)' : e.banned === false ? 'var(--good)' : 'var(--muted)'};font-weight:500">
+              ${e.banned ? 'Banned' : e.banned === false ? 'Clear' : 'Error'}
+            </span>
+          </div>
+        `).join('');
+
+        const manualEntries = manualHistory[acc.handle] || [];
+        const manualHtml = manualEntries.slice(-5).reverse().map(e => `
           <div class="history-item">
             <span>${formatTime(e.timestamp)}</span>
             <span style="color:${e.banned ? 'var(--bad)' : e.banned === false ? 'var(--good)' : 'var(--muted)'};font-weight:500">
@@ -419,9 +425,14 @@
               `).join('')}
             </div>
             <div class="history-section">
-              <h3>Recent Checks</h3>
+              <h3>Recent Checks (scheduled)</h3>
               <div class="history-list">${historyHtml || '<div class="meta">No data yet</div>'}</div>
             </div>
+            ${manualHtml ? `
+            <div class="manual-section">
+              <h3>Manual Checks</h3>
+              <div class="history-list">${manualHtml}</div>
+            </div>` : ''}
           </div>
         `;
       }).join('');
@@ -429,20 +440,21 @@
 
     document.getElementById('checkNow').addEventListener('click', checkNow);
 
-    // Secret image video toggle
-    let videoOn = false;
+    // Secret image audio toggle
+    let audioPlaying = false;
+    const audio = document.getElementById('sound');
     document.getElementById('secretImg').addEventListener('click', () => {
-      const container = document.getElementById('videoContainer');
-      if (!videoOn) {
-        container.innerHTML = `<iframe src="https://www.youtube.com/embed/IZ8WG4vzYmE?autoplay=1" allow="autoplay" allowfullscreen></iframe>`;
-        container.style.display = 'block';
-        videoOn = true;
+      if (!audioPlaying) {
+        audio.currentTime = 0;
+        audio.play();
+        audioPlaying = true;
       } else {
-        container.innerHTML = '';
-        container.style.display = 'none';
-        videoOn = false;
+        audio.pause();
+        audio.currentTime = 0;
+        audioPlaying = false;
       }
     });
+    audio.addEventListener('ended', () => { audioPlaying = false; });
 
     load();
     // Refresh the display every minute so durations stay accurate
