@@ -10,15 +10,23 @@ from pathlib import Path
 ACCOUNTS = ["keepsayinitkris", "insanejarona", "keptsayinitkris"]
 API = "https://shadowban-api.yuzurisa.com:444/{}"
 HISTORY_PATH = Path("data/history.json")
-MAX_ENTRIES = 2000  # keep last N checks per account
+MAX_ENTRIES = 2000
 
-def fetch(handle: str) -> dict:
+def fetch(handle: str, retries: int = 2) -> dict:
     url = API.format(handle)
-    try:
-        with urllib.request.urlopen(url, timeout=30) as resp:
-            return json.loads(resp.read().decode())
-    except Exception as e:
-        return {"error": str(e), "profile": {"exists": False}}
+    for attempt in range(retries + 1):
+        try:
+            req = urllib.request.Request(url, headers={"User-Agent": "ShadowbanMonitor/1.0"})
+            with urllib.request.urlopen(req, timeout=20) as resp:
+                raw = resp.read().decode()
+                if not raw.strip().startswith("{"):
+                    raise ValueError("Non-JSON response")
+                return json.loads(raw)
+        except Exception as e:
+            if attempt == retries:
+                return {"error": str(e), "profile": {"exists": False}}
+            time.sleep(2)
+    return {"error": "unknown", "profile": {"exists": False}}
 
 def is_banned(tests: dict | None) -> bool | None:
     if not tests:
@@ -27,32 +35,46 @@ def is_banned(tests: dict | None) -> bool | None:
     suggestion_ban = tests.get("typeahead") is False
     ghost_ban = (tests.get("ghost") or {}).get("ban") is True
     reply_deboost = (tests.get("more_replies") or {}).get("ban") is True
-    return search_ban or suggestion_ban or ghost_ban or reply_deboost
+    return bool(search_ban or suggestion_ban or ghost_ban or reply_deboost)
 
 def main():
     history = {"accounts": {}, "lastUpdated": None}
     if HISTORY_PATH.exists():
-        history = json.loads(HISTORY_PATH.read_text())
+        try:
+            history = json.loads(HISTORY_PATH.read_text())
+        except Exception:
+            pass
 
     now = int(time.time() * 1000)
+    any_success = False
 
     for handle in ACCOUNTS:
         data = fetch(handle)
         tests = data.get("tests")
+        banned = is_banned(tests)
+
+        # Only record if we got a real result (not an API error)
+        if data.get("error") and banned is None:
+            print(f"Skipping {handle}: {data.get('error')}")
+            continue
+
         entry = {
             "timestamp": now,
-            "banned": is_banned(tests),
+            "banned": banned,
             "exists": (data.get("profile") or {}).get("exists", False),
             "tests": tests,
             "error": data.get("error"),
         }
         history.setdefault("accounts", {}).setdefault(handle, []).append(entry)
-        # trim old entries
         history["accounts"][handle] = history["accounts"][handle][-MAX_ENTRIES:]
+        any_success = True
 
-    history["lastUpdated"] = now
-    HISTORY_PATH.write_text(json.dumps(history, indent=2))
-    print(f"Updated history at {now}")
+    if any_success:
+        history["lastUpdated"] = now
+        HISTORY_PATH.write_text(json.dumps(history, indent=2))
+        print(f"Updated history at {now}")
+    else:
+        print("No successful checks — history left unchanged")
 
 if __name__ == "__main__":
     main()
