@@ -252,14 +252,28 @@
     }
 
     function getLiftInfo(entries) {
-      // Find the most recent time a specific ban type was lifted while others may still be active
+      // Only report a lift if the ban is currently lifted in the most recent valid check
       let searchLifted = null;
       let suggestionLifted = null;
 
+      // Find most recent valid entry
+      let latestValid = null;
+      for (let i = entries.length - 1; i >= 0; i--) {
+        if (entries[i].tests && entries[i].banned !== null && entries[i].banned !== undefined) {
+          latestValid = entries[i];
+          break;
+        }
+      }
+      if (!latestValid) return { searchLifted, suggestionLifted };
+
+      const currentlySearchBanned = latestValid.tests.search === false;
+      const currentlySuggBanned = latestValid.tests.typeahead === false;
+
+      // Walk backward to find the most recent lift of each type
       for (let i = entries.length - 1; i >= 1; i--) {
         const curr = entries[i];
         const prev = entries[i - 1];
-        if (!curr.tests || !prev.tests || curr.banned === null || prev.banned === null) continue;
+        if (!curr.tests || !prev.tests) continue;
 
         const currSearch = curr.tests.search === false;
         const prevSearch = prev.tests.search === false;
@@ -274,6 +288,11 @@
         }
         if (searchLifted && suggestionLifted) break;
       }
+
+      // Only keep the lift time if that ban is still currently lifted
+      if (currentlySearchBanned) searchLifted = null;
+      if (currentlySuggBanned) suggestionLifted = null;
+
       return { searchLifted, suggestionLifted };
     }
 
