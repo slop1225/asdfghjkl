@@ -623,6 +623,27 @@
         },
         "error": null,
         "source": "scheduled"
+      },
+      {
+        "timestamp": 1792507371442,
+        "banned": true,
+        "exists": true,
+        "tests": {
+          "search": false,
+          "typeahead": false,
+          "ghost": {
+            "ban": false,
+            "tweet": "2112461817851392064",
+            "in_reply_to": "2112552115243741445"
+          },
+          "more_replies": {
+            "ban": false,
+            "tweet": "2112461817851392064",
+            "in_reply_to": "2112552115243741445"
+          }
+        },
+        "error": null,
+        "source": "scheduled"
       }
     ],
     "insanejarona": [
@@ -1230,6 +1251,27 @@
       },
       {
         "timestamp": 1792505102648,
+        "banned": true,
+        "exists": true,
+        "tests": {
+          "search": "_error",
+          "typeahead": false,
+          "ghost": {
+            "ban": null,
+            "tweet": null,
+            "in_reply_to": null
+          },
+          "more_replies": {
+            "ban": null,
+            "tweet": null,
+            "in_reply_to": null
+          }
+        },
+        "error": null,
+        "source": "scheduled"
+      },
+      {
+        "timestamp": 1792507371442,
         "banned": true,
         "exists": true,
         "tests": {
@@ -1860,8 +1902,29 @@
         },
         "error": null,
         "source": "scheduled"
+      },
+      {
+        "timestamp": 1792507371442,
+        "banned": false,
+        "exists": true,
+        "tests": {
+          "search": "_implied_good",
+          "typeahead": true,
+          "ghost": {
+            "ban": false,
+            "tweet": "2111212939558691265",
+            "in_reply_to": "2111218202365788259"
+          },
+          "more_replies": {
+            "ban": false,
+            "tweet": "2111212939558691265",
+            "in_reply_to": "2111218202365788259"
+          }
+        },
+        "error": null,
+        "source": "scheduled"
       }
     ]
   },
-  "lastUpdated": 1792505102648
+  "lastUpdated": 1792507371442
 }
