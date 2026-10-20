@@ -413,6 +413,27 @@
         },
         "error": null,
         "source": "scheduled"
+      },
+      {
+        "timestamp": 1792485792899,
+        "banned": true,
+        "exists": true,
+        "tests": {
+          "search": false,
+          "typeahead": false,
+          "ghost": {
+            "ban": false,
+            "tweet": "2112329175331705069",
+            "in_reply_to": "2112341654795329771"
+          },
+          "more_replies": {
+            "ban": false,
+            "tweet": "2112329175331705069",
+            "in_reply_to": "2112341654795329771"
+          }
+        },
+        "error": null,
+        "source": "scheduled"
       }
     ],
     "insanejarona": [
@@ -854,6 +875,14 @@
         },
         "error": null,
         "source": "scheduled"
+      },
+      {
+        "timestamp": 1792485792899,
+        "banned": null,
+        "exists": false,
+        "tests": null,
+        "error": "HTTP Error 503: Service Unavailable",
+        "source": "scheduled"
       }
     ],
     "keptsayinitkris": [
@@ -1256,8 +1285,29 @@
         "tests": null,
         "error": null,
         "source": "scheduled"
+      },
+      {
+        "timestamp": 1792485792899,
+        "banned": false,
+        "exists": true,
+        "tests": {
+          "search": "_implied_good",
+          "typeahead": true,
+          "ghost": {
+            "ban": false,
+            "tweet": "2111212939558691265",
+            "in_reply_to": "2111218202365788259"
+          },
+          "more_replies": {
+            "ban": false,
+            "tweet": "2111212939558691265",
+            "in_reply_to": "2111218202365788259"
+          }
+        },
+        "error": null,
+        "source": "scheduled"
       }
     ]
   },
-  "lastUpdated": 1792483361492
+  "lastUpdated": 1792485792899
 }
