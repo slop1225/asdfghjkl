@@ -308,6 +308,27 @@
         },
         "error": null,
         "source": "scheduled"
+      },
+      {
+        "timestamp": 1792473627263,
+        "banned": true,
+        "exists": true,
+        "tests": {
+          "search": false,
+          "typeahead": false,
+          "ghost": {
+            "ban": false,
+            "tweet": "2112329175331705069",
+            "in_reply_to": "2112341654795329771"
+          },
+          "more_replies": {
+            "ban": false,
+            "tweet": "2112329175331705069",
+            "in_reply_to": "2112341654795329771"
+          }
+        },
+        "error": null,
+        "source": "scheduled"
       }
     ],
     "insanejarona": [
@@ -644,6 +665,27 @@
         },
         "error": null,
         "source": "scheduled"
+      },
+      {
+        "timestamp": 1792473627263,
+        "banned": true,
+        "exists": true,
+        "tests": {
+          "search": false,
+          "typeahead": false,
+          "ghost": {
+            "ban": false,
+            "tweet": "2110638428366803242",
+            "in_reply_to": "2111793678855602670"
+          },
+          "more_replies": {
+            "ban": false,
+            "tweet": "2110638428366803242",
+            "in_reply_to": "2111793678855602670"
+          }
+        },
+        "error": null,
+        "source": "scheduled"
       }
     ],
     "keptsayinitkris": [
@@ -954,8 +996,29 @@
         },
         "error": null,
         "source": "scheduled"
+      },
+      {
+        "timestamp": 1792473627263,
+        "banned": false,
+        "exists": true,
+        "tests": {
+          "search": "_implied_good",
+          "typeahead": true,
+          "ghost": {
+            "ban": false,
+            "tweet": "2111212939558691265",
+            "in_reply_to": "2111218202365788259"
+          },
+          "more_replies": {
+            "ban": false,
+            "tweet": "2111212939558691265",
+            "in_reply_to": "2111218202365788259"
+          }
+        },
+        "error": null,
+        "source": "scheduled"
       }
     ]
   },
-  "lastUpdated": 1792471688326
+  "lastUpdated": 1792473627263
 }
