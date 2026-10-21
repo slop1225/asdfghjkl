@@ -1106,6 +1106,27 @@
         },
         "error": null,
         "source": "scheduled"
+      },
+      {
+        "timestamp": 1792554272738,
+        "banned": true,
+        "exists": true,
+        "tests": {
+          "search": "_error",
+          "typeahead": false,
+          "ghost": {
+            "ban": null,
+            "tweet": null,
+            "in_reply_to": null
+          },
+          "more_replies": {
+            "ban": null,
+            "tweet": null,
+            "in_reply_to": null
+          }
+        },
+        "error": null,
+        "source": "scheduled"
       }
     ],
     "insanejarona": [
@@ -2160,6 +2181,27 @@
         "banned": null,
         "exists": false,
         "tests": null,
+        "error": null,
+        "source": "scheduled"
+      },
+      {
+        "timestamp": 1792554272738,
+        "banned": true,
+        "exists": true,
+        "tests": {
+          "search": false,
+          "typeahead": false,
+          "ghost": {
+            "ban": false,
+            "tweet": "2110638428366803242",
+            "in_reply_to": "2111793678855602670"
+          },
+          "more_replies": {
+            "ban": false,
+            "tweet": "2110638428366803242",
+            "in_reply_to": "2111793678855602670"
+          }
+        },
         "error": null,
         "source": "scheduled"
       }
@@ -3244,8 +3286,29 @@
         },
         "error": null,
         "source": "scheduled"
+      },
+      {
+        "timestamp": 1792554272738,
+        "banned": false,
+        "exists": true,
+        "tests": {
+          "search": "_implied_good",
+          "typeahead": true,
+          "ghost": {
+            "ban": null,
+            "tweet": null,
+            "in_reply_to": null
+          },
+          "more_replies": {
+            "ban": null,
+            "tweet": null,
+            "in_reply_to": null
+          }
+        },
+        "error": null,
+        "source": "scheduled"
       }
     ]
   },
-  "lastUpdated": 1792552333457
+  "lastUpdated": 1792554272738
 }
