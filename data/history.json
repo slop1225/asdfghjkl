@@ -2306,6 +2306,27 @@
         },
         "error": null,
         "source": "scheduled"
+      },
+      {
+        "timestamp": 1792685724817,
+        "banned": true,
+        "exists": true,
+        "tests": {
+          "search": false,
+          "typeahead": false,
+          "ghost": {
+            "ban": false,
+            "tweet": "2113289883032678497",
+            "in_reply_to": "2113296270399823894"
+          },
+          "more_replies": {
+            "ban": false,
+            "tweet": "2113289883032678497",
+            "in_reply_to": "2113296270399823894"
+          }
+        },
+        "error": null,
+        "source": "scheduled"
       }
     ],
     "insanejarona": [
@@ -4534,6 +4555,27 @@
         "banned": null,
         "exists": false,
         "tests": null,
+        "error": null,
+        "source": "scheduled"
+      },
+      {
+        "timestamp": 1792685724817,
+        "banned": false,
+        "exists": true,
+        "tests": {
+          "search": "_implied_good",
+          "typeahead": true,
+          "ghost": {
+            "ban": null,
+            "tweet": null,
+            "in_reply_to": null
+          },
+          "more_replies": {
+            "ban": null,
+            "tweet": null,
+            "in_reply_to": null
+          }
+        },
         "error": null,
         "source": "scheduled"
       }
@@ -6805,8 +6847,29 @@
         },
         "error": null,
         "source": "scheduled"
+      },
+      {
+        "timestamp": 1792685724817,
+        "banned": false,
+        "exists": true,
+        "tests": {
+          "search": "_implied_good",
+          "typeahead": true,
+          "ghost": {
+            "ban": false,
+            "tweet": "2112658829829677352",
+            "in_reply_to": "2112660141858238900"
+          },
+          "more_replies": {
+            "ban": false,
+            "tweet": "2112658829829677352",
+            "in_reply_to": "2112660141858238900"
+          }
+        },
+        "error": null,
+        "source": "scheduled"
       }
     ]
   },
-  "lastUpdated": 1792683764117
+  "lastUpdated": 1792685724817
 }
