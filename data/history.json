@@ -3194,6 +3194,27 @@
         },
         "error": null,
         "source": "scheduled"
+      },
+      {
+        "timestamp": 1792785335511,
+        "banned": true,
+        "exists": true,
+        "tests": {
+          "search": "_error",
+          "typeahead": false,
+          "ghost": {
+            "ban": null,
+            "tweet": null,
+            "in_reply_to": null
+          },
+          "more_replies": {
+            "ban": null,
+            "tweet": null,
+            "in_reply_to": null
+          }
+        },
+        "error": null,
+        "source": "scheduled"
       }
     ],
     "insanejarona": [
@@ -6307,6 +6328,27 @@
       },
       {
         "timestamp": 1792783554160,
+        "banned": false,
+        "exists": true,
+        "tests": {
+          "search": "_implied_good",
+          "typeahead": true,
+          "ghost": {
+            "ban": false,
+            "tweet": "2113369102366724112",
+            "in_reply_to": "2113413101492318380"
+          },
+          "more_replies": {
+            "ban": false,
+            "tweet": "2113369102366724112",
+            "in_reply_to": "2113413101492318380"
+          }
+        },
+        "error": null,
+        "source": "scheduled"
+      },
+      {
+        "timestamp": 1792785335511,
         "banned": false,
         "exists": true,
         "tests": {
@@ -9495,8 +9537,16 @@
         },
         "error": null,
         "source": "scheduled"
+      },
+      {
+        "timestamp": 1792785335511,
+        "banned": null,
+        "exists": false,
+        "tests": null,
+        "error": "HTTP Error 503: Service Unavailable",
+        "source": "scheduled"
       }
     ]
   },
-  "lastUpdated": 1792783554160
+  "lastUpdated": 1792785335511
 }
