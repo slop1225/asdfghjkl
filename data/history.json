@@ -4000,6 +4000,27 @@
         },
         "error": null,
         "source": "scheduled"
+      },
+      {
+        "timestamp": 1792859969195,
+        "banned": true,
+        "exists": true,
+        "tests": {
+          "search": false,
+          "typeahead": false,
+          "ghost": {
+            "ban": false,
+            "tweet": "2113934956892471768",
+            "in_reply_to": "2113991753300865183"
+          },
+          "more_replies": {
+            "ban": false,
+            "tweet": "2113934956892471768",
+            "in_reply_to": "2113991753300865183"
+          }
+        },
+        "error": null,
+        "source": "scheduled"
       }
     ],
     "insanejarona": [
@@ -7893,6 +7914,27 @@
       },
       {
         "timestamp": 1792858016372,
+        "banned": false,
+        "exists": true,
+        "tests": {
+          "search": "_implied_good",
+          "typeahead": true,
+          "ghost": {
+            "ban": false,
+            "tweet": "2113725053825429849",
+            "in_reply_to": "2113756247761797229"
+          },
+          "more_replies": {
+            "ban": false,
+            "tweet": "2113725053825429849",
+            "in_reply_to": "2113756247761797229"
+          }
+        },
+        "error": null,
+        "source": "scheduled"
+      },
+      {
+        "timestamp": 1792859969195,
         "banned": false,
         "exists": true,
         "tests": {
@@ -11861,8 +11903,29 @@
         },
         "error": null,
         "source": "scheduled"
+      },
+      {
+        "timestamp": 1792859969195,
+        "banned": false,
+        "exists": true,
+        "tests": {
+          "search": "_implied_good",
+          "typeahead": true,
+          "ghost": {
+            "ban": false,
+            "tweet": "2114023001163219316",
+            "in_reply_to": "2114027471913762933"
+          },
+          "more_replies": {
+            "ban": false,
+            "tweet": "2114023001163219316",
+            "in_reply_to": "2114027471913762933"
+          }
+        },
+        "error": null,
+        "source": "scheduled"
       }
     ]
   },
-  "lastUpdated": 1792858016372
+  "lastUpdated": 1792859969195
 }
