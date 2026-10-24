@@ -3979,6 +3979,27 @@
         },
         "error": null,
         "source": "scheduled"
+      },
+      {
+        "timestamp": 1792858016372,
+        "banned": true,
+        "exists": true,
+        "tests": {
+          "search": "_error",
+          "typeahead": false,
+          "ghost": {
+            "ban": null,
+            "tweet": null,
+            "in_reply_to": null
+          },
+          "more_replies": {
+            "ban": null,
+            "tweet": null,
+            "in_reply_to": null
+          }
+        },
+        "error": null,
+        "source": "scheduled"
       }
     ],
     "insanejarona": [
@@ -7851,6 +7872,27 @@
       },
       {
         "timestamp": 1792856347983,
+        "banned": false,
+        "exists": true,
+        "tests": {
+          "search": "_implied_good",
+          "typeahead": true,
+          "ghost": {
+            "ban": false,
+            "tweet": "2113725053825429849",
+            "in_reply_to": "2113756247761797229"
+          },
+          "more_replies": {
+            "ban": false,
+            "tweet": "2113725053825429849",
+            "in_reply_to": "2113756247761797229"
+          }
+        },
+        "error": null,
+        "source": "scheduled"
+      },
+      {
+        "timestamp": 1792858016372,
         "banned": false,
         "exists": true,
         "tests": {
@@ -11798,8 +11840,29 @@
         },
         "error": null,
         "source": "scheduled"
+      },
+      {
+        "timestamp": 1792858016372,
+        "banned": false,
+        "exists": true,
+        "tests": {
+          "search": "_implied_good",
+          "typeahead": true,
+          "ghost": {
+            "ban": null,
+            "tweet": null,
+            "in_reply_to": null
+          },
+          "more_replies": {
+            "ban": null,
+            "tweet": null,
+            "in_reply_to": null
+          }
+        },
+        "error": null,
+        "source": "scheduled"
       }
     ]
   },
-  "lastUpdated": 1792856347983
+  "lastUpdated": 1792858016372
 }
