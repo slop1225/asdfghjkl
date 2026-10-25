@@ -4780,6 +4780,27 @@
         },
         "error": null,
         "source": "scheduled"
+      },
+      {
+        "timestamp": 1792929875698,
+        "banned": true,
+        "exists": true,
+        "tests": {
+          "search": false,
+          "typeahead": false,
+          "ghost": {
+            "ban": false,
+            "tweet": "2113934956892471768",
+            "in_reply_to": "2113991753300865183"
+          },
+          "more_replies": {
+            "ban": false,
+            "tweet": "2113934956892471768",
+            "in_reply_to": "2113991753300865183"
+          }
+        },
+        "error": null,
+        "source": "scheduled"
       }
     ],
     "insanejarona": [
@@ -9457,6 +9478,14 @@
           }
         },
         "error": null,
+        "source": "scheduled"
+      },
+      {
+        "timestamp": 1792929875698,
+        "banned": null,
+        "exists": false,
+        "tests": null,
+        "error": "HTTP Error 502: Bad Gateway",
         "source": "scheduled"
       }
     ],
@@ -14188,8 +14217,16 @@
         },
         "error": null,
         "source": "scheduled"
+      },
+      {
+        "timestamp": 1792929875698,
+        "banned": null,
+        "exists": false,
+        "tests": null,
+        "error": "HTTP Error 502: Bad Gateway",
+        "source": "scheduled"
       }
     ]
   },
-  "lastUpdated": 1792928267068
+  "lastUpdated": 1792929875698
 }
