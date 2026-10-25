@@ -222,10 +222,10 @@
     <div class="appeal-section">
       <h2>Adult Content <span>Appeal Link</span></h2>
       <p class="appeal-hint">
-        Paste a tweet URL (or just the status ID). The tool auto-fetches the owner’s numeric user ID and builds the community appeal link used when the in-app Appeal button is missing.
+        Paste a tweet URL from one of the three accounts. The matching numeric User ID is filled in automatically.
       </p>
       <div class="appeal-row">
-        <input type="text" id="tweetInput" placeholder="https://x.com/user/status/1234567890  or  1234567890" autocomplete="off" spellcheck="false">
+        <input type="text" id="tweetInput" placeholder="https://x.com/keepsayingitkris/status/1234567890" autocomplete="off" spellcheck="false">
         <button id="generateAppeal">Generate</button>
       </div>
       <div class="appeal-status" id="appealStatus"></div>
@@ -565,47 +565,30 @@
     const REPORT_FLOW_ID = 'd490c7f6-8975-4fa7-87d0-6fbb12335235';
     const CLIENT_APP_ID = '3033300';
 
-    function extractTweetId(input) {
+    // Hardcoded numeric User IDs (case-insensitive match on username from URL)
+    const KNOWN_USER_IDS = {
+      'keepsayingitkris': '1836499036100018176',
+      'keepsayinitkris':  '1836499036100018176',
+      'insanejarona':     '1955339215966810112',
+      'keptsayinitkris':  '2109428041428434944'
+    };
+
+    function parseTweetInput(input) {
       const s = (input || '').trim();
-      // Full URL: .../status/1234567890 or .../statuses/1234567890
-      const m = s.match(/(?:status(?:es)?\/)(\d{5,25})/i);
-      if (m) return m[1];
-      // Bare numeric ID
-      if (/^\d{5,25}$/.test(s)) return s;
-      return null;
-    }
+      let tweetId = null;
+      let username = null;
 
-    function syndicationToken(tweetId) {
-      // Same formula used by the official embed / react-tweet
-      const t = (Number(tweetId) / 1e15) * Math.PI;
-      return String(t).replace(/0+|\./g, '');
-    }
-
-    async function fetchAuthorId(tweetId) {
-      const token = syndicationToken(tweetId);
-      const target = `https://cdn.syndication.twimg.com/tweet-result?id=${tweetId}&lang=en&token=${token}`;
-      // Public CORS proxies (try a couple)
-      const proxies = [
-        `https://corsproxy.io/?${encodeURIComponent(target)}`,
-        `https://api.allorigins.win/raw?url=${encodeURIComponent(target)}`
-      ];
-      let lastErr = null;
-      for (const url of proxies) {
-        try {
-          const res = await fetch(url, { signal: AbortSignal.timeout(12000) });
-          if (!res.ok) throw new Error(`HTTP ${res.status}`);
-          const data = await res.json();
-          const id = data?.user?.id_str || data?.user?.id;
-          if (id) return String(id);
-          if (data?.__typename === 'TweetTombstone' || data?.notFound) {
-            throw new Error('Tweet not found or deleted');
-          }
-          throw new Error('No user ID in response');
-        } catch (e) {
-          lastErr = e;
-        }
+      const urlMatch = s.match(/(?:x\.com|twitter\.com)\/([A-Za-z0-9_]{1,15})\/status(?:es)?\/(\d{5,25})/i);
+      if (urlMatch) {
+        username = urlMatch[1].toLowerCase();
+        tweetId = urlMatch[2];
+      } else {
+        const idOnly = s.match(/^(\d{5,25})$/);
+        if (idOnly) tweetId = idOnly[1];
+        const statusOnly = s.match(/status(?:es)?\/(\d{5,25})/i);
+        if (statusOnly) tweetId = statusOnly[1];
       }
-      throw lastErr || new Error('Lookup failed');
+      return { tweetId, username };
     }
 
     function buildAppealLink(tweetId, userId) {
@@ -620,48 +603,40 @@
       return `https://x.com/i/safety/report_story?${params.toString()}`;
     }
 
-    async function generateAppeal() {
-      const input = document.getElementById('tweetInput').value;
-      const statusEl = document.getElementById('appealStatus');
+    function setStatus(msg, type) {
+      const el = document.getElementById('appealStatus');
+      el.className = 'appeal-status' + (type ? ' ' + type : '');
+      el.textContent = msg || '';
+    }
+
+    function generateAppeal() {
+      const { tweetId, username } = parseTweetInput(document.getElementById('tweetInput').value);
       const resultEl = document.getElementById('appealResult');
-      const btn = document.getElementById('generateAppeal');
-
       resultEl.classList.remove('visible');
-      statusEl.className = 'appeal-status';
-      statusEl.textContent = '';
 
-      const tweetId = extractTweetId(input);
       if (!tweetId) {
-        statusEl.className = 'appeal-status error';
-        statusEl.textContent = 'Could not find a tweet ID. Paste a full x.com/…/status/… link or the numeric ID.';
+        setStatus('Could not find a tweet ID. Paste a full x.com/username/status/… link.', 'error');
         return;
       }
 
-      btn.disabled = true;
-      btn.textContent = 'Looking up…';
-      statusEl.textContent = `Tweet ${tweetId} · fetching owner ID…`;
-
-      try {
-        const userId = await fetchAuthorId(tweetId);
-        const link = buildAppealLink(tweetId, userId);
-
-        document.getElementById('appealLinkText').textContent = link;
-        document.getElementById('appealMeta').textContent =
-          `Tweet ID: ${tweetId}  ·  User ID: ${userId}`;
-        resultEl.classList.add('visible');
-        statusEl.className = 'appeal-status ok';
-        statusEl.textContent = 'Appeal link ready. Open it in a desktop / private browser (not the X app).';
-
-        // Store for the copy/open buttons
-        window.__lastAppealLink = link;
-      } catch (err) {
-        statusEl.className = 'appeal-status error';
-        statusEl.textContent = 'Could not fetch user ID: ' + (err.message || err) +
-          '. Try again or look it up manually on tweeterid.com.';
-      } finally {
-        btn.disabled = false;
-        btn.textContent = 'Generate';
+      const userId = username ? KNOWN_USER_IDS[username] : null;
+      if (!userId) {
+        setStatus(
+          username
+            ? `Unknown account @${username}. Supported: keepsayingitkris / keepsayinitkris, insanejarona, keptsayinitkris.`
+            : 'Please paste the full tweet URL (so the username is visible).',
+          'error'
+        );
+        return;
       }
+
+      const link = buildAppealLink(tweetId, userId);
+      document.getElementById('appealLinkText').textContent = link;
+      document.getElementById('appealMeta').textContent =
+        `Tweet ID: ${tweetId}  ·  @${username}  ·  User ID: ${userId}`;
+      resultEl.classList.add('visible');
+      setStatus('Appeal link ready. Open it in a desktop / private browser (not the X app).', 'ok');
+      window.__lastAppealLink = link;
     }
 
     document.getElementById('generateAppeal').addEventListener('click', generateAppeal);
