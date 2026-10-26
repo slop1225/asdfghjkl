@@ -338,9 +338,8 @@
     <div class="watch-section">
       <h2>Tweet <span>Watchlist</span></h2>
       <p class="watch-hint">
-        Global list (shared). Stored in <code>data/watchlist.json</code>.
-        Paste a URL → <strong>Add</strong> copies the JSON entry so you can paste it into the file and push.
-        <strong>Open all</strong> opens every tweet in new tabs.
+        Shared list (saved online). Paste a tweet URL → <strong>Add</strong>.
+        <strong>Open all</strong> opens every tweet in new tabs. Use ✕ to remove.
       </p>
       <div class="watch-row">
         <input type="text" id="watchInput" placeholder="https://x.com/username/status/1234567890" autocomplete="off" spellcheck="false">
@@ -778,7 +777,11 @@
       if (link) window.open(link, '_blank', 'noopener');
     });
 
-    // ── Tweet Watchlist (global via data/watchlist.json) ─────────────
+    // ── Tweet Watchlist (global via JSONBin) ─────────────────────────
+    const JSONBIN_ID = '6ade9bdaffd5d160538b8173';
+    const JSONBIN_KEY = '$2a$10$ZyH4tnm7VISU/Kx94T0d8.BqCnvEmQWRcDfwmVXPEw9RHoDsjp4bm';
+    const JSONBIN_URL = `https://api.jsonbin.io/v3/b/${JSONBIN_ID}`;
+
     let watchlist = [];
 
     function renderWatchlist() {
@@ -787,43 +790,68 @@
       const actions = document.getElementById('watchActions');
       list.innerHTML = '';
 
-      if (!watchlist.length) {
+      const items = watchlist.filter(w => w.tweetId && w.tweetId !== '0');
+
+      if (!items.length) {
         empty.style.display = 'block';
-        empty.textContent = 'No tweets in the global list yet.';
+        empty.textContent = 'No tweets in the list yet.';
         actions.style.display = 'none';
         return;
       }
       empty.style.display = 'none';
       actions.style.display = 'flex';
 
-      watchlist.forEach(item => {
+      items.forEach((item, i) => {
         const li = document.createElement('li');
         li.className = 'watch-item';
         const handle = item.username ? '@' + item.username : '';
         li.innerHTML = `
           <a href="${item.url}" target="_blank" rel="noopener">${item.url}</a>
           <span class="watch-meta">${handle}</span>
+          <button type="button" data-i="${i}" title="Remove">✕</button>
         `;
         list.appendChild(li);
+      });
+
+      list.querySelectorAll('button[data-i]').forEach(btn => {
+        btn.addEventListener('click', () => removeFromWatchlist(Number(btn.dataset.i)));
       });
     }
 
     async function loadWatchlist() {
+      const empty = document.getElementById('watchEmpty');
+      empty.textContent = 'Loading…';
       try {
-        const res = await fetch('data/watchlist.json?t=' + Date.now());
+        const res = await fetch(`${JSONBIN_URL}/latest`, {
+          headers: { 'X-Master-Key': JSONBIN_KEY }
+        });
         if (!res.ok) throw new Error('HTTP ' + res.status);
-        watchlist = await res.json();
-        if (!Array.isArray(watchlist)) watchlist = [];
+        const data = await res.json();
+        watchlist = Array.isArray(data.record) ? data.record : [];
       } catch (e) {
         watchlist = [];
-        document.getElementById('watchEmpty').textContent = 'Could not load watchlist.';
+        empty.textContent = 'Could not load watchlist.';
+        console.error(e);
       }
       renderWatchlist();
     }
 
-    function addToWatchlist() {
+    async function saveWatchlist() {
+      const res = await fetch(JSONBIN_URL, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Master-Key': JSONBIN_KEY
+        },
+        body: JSON.stringify(watchlist)
+      });
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+    }
+
+    async function addToWatchlist() {
       const raw = document.getElementById('watchInput').value.trim();
       const statusEl = document.getElementById('watchStatus');
+      const btn = document.getElementById('addWatch');
       statusEl.className = 'appeal-status';
       statusEl.textContent = '';
 
@@ -843,29 +871,49 @@
 
       if (watchlist.some(w => w.tweetId === info.tweetId)) {
         statusEl.className = 'appeal-status error';
-        statusEl.textContent = 'Already in the global list.';
+        statusEl.textContent = 'Already in the list.';
         return;
       }
 
-      const entry = {
-        tweetId: info.tweetId,
-        username,
-        url,
-        added: new Date().toISOString()
-      };
+      btn.disabled = true;
+      btn.textContent = 'Adding…';
 
-      const line = JSON.stringify(entry, null, 2);
-      // Copy ready-to-paste JSON so user can add it to data/watchlist.json
-      navigator.clipboard.writeText(line).then(() => {
+      try {
+        watchlist = watchlist.filter(w => w.tweetId && w.tweetId !== '0');
+        watchlist.unshift({
+          tweetId: info.tweetId,
+          username,
+          url,
+          added: new Date().toISOString()
+        });
+        await saveWatchlist();
+        renderWatchlist();
         statusEl.className = 'appeal-status ok';
-        statusEl.textContent = 'JSON entry copied. Paste it into data/watchlist.json (as an array item) and push.';
-      }).catch(() => {
-        statusEl.className = 'appeal-status ok';
-        statusEl.textContent = 'Copy this into data/watchlist.json then push:';
-        prompt('Add this object to the array in data/watchlist.json:', line);
-      });
+        statusEl.textContent = 'Added.';
+        document.getElementById('watchInput').value = '';
+      } catch (e) {
+        statusEl.className = 'appeal-status error';
+        statusEl.textContent = 'Failed to save: ' + (e.message || e);
+        watchlist.shift();
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Add';
+      }
+    }
 
-      document.getElementById('watchInput').value = '';
+    async function removeFromWatchlist(visibleIndex) {
+      const items = watchlist.filter(w => w.tweetId && w.tweetId !== '0');
+      const target = items[visibleIndex];
+      if (!target) return;
+      watchlist = watchlist.filter(w => w.tweetId !== target.tweetId);
+      try {
+        await saveWatchlist();
+        renderWatchlist();
+      } catch (e) {
+        document.getElementById('watchStatus').className = 'appeal-status error';
+        document.getElementById('watchStatus').textContent = 'Failed to remove.';
+        loadWatchlist();
+      }
     }
 
     document.getElementById('addWatch').addEventListener('click', addToWatchlist);
@@ -874,8 +922,9 @@
     });
 
     document.getElementById('openAllWatch').addEventListener('click', () => {
-      if (!watchlist.length) return;
-      watchlist.forEach((item, i) => {
+      const items = watchlist.filter(w => w.tweetId && w.tweetId !== '0');
+      if (!items.length) return;
+      items.forEach((item, i) => {
         setTimeout(() => window.open(item.url, '_blank', 'noopener'), i * 150);
       });
     });
