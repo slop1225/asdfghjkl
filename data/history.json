@@ -5615,6 +5615,27 @@
         },
         "error": null,
         "source": "scheduled"
+      },
+      {
+        "timestamp": 1793006073769,
+        "banned": false,
+        "exists": true,
+        "tests": {
+          "search": "_implied_good",
+          "typeahead": true,
+          "ghost": {
+            "ban": false,
+            "tweet": "2114577458762822099",
+            "in_reply_to": "2114579012911587512"
+          },
+          "more_replies": {
+            "ban": false,
+            "tweet": "2114577458762822099",
+            "in_reply_to": "2114579012911587512"
+          }
+        },
+        "error": null,
+        "source": "scheduled"
       }
     ],
     "insanejarona": [
@@ -11097,6 +11118,27 @@
       },
       {
         "timestamp": 1793003264625,
+        "banned": false,
+        "exists": true,
+        "tests": {
+          "search": "_implied_good",
+          "typeahead": true,
+          "ghost": {
+            "ban": false,
+            "tweet": "2113710466115719313",
+            "in_reply_to": "2113755822136377529"
+          },
+          "more_replies": {
+            "ban": false,
+            "tweet": "2113710466115719313",
+            "in_reply_to": "2114057848699383963"
+          }
+        },
+        "error": null,
+        "source": "scheduled"
+      },
+      {
+        "timestamp": 1793006073769,
         "banned": false,
         "exists": true,
         "tests": {
@@ -16654,8 +16696,16 @@
         },
         "error": null,
         "source": "scheduled"
+      },
+      {
+        "timestamp": 1793006073769,
+        "banned": null,
+        "exists": false,
+        "tests": null,
+        "error": null,
+        "source": "scheduled"
       }
     ]
   },
-  "lastUpdated": 1793003264625
+  "lastUpdated": 1793006073769
 }
