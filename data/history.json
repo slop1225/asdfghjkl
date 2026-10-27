@@ -6406,6 +6406,27 @@
         },
         "error": null,
         "source": "scheduled"
+      },
+      {
+        "timestamp": 1793120167011,
+        "banned": false,
+        "exists": true,
+        "tests": {
+          "search": "_implied_good",
+          "typeahead": true,
+          "ghost": {
+            "ban": false,
+            "tweet": "2114410057593172014",
+            "in_reply_to": "2115124781922341188"
+          },
+          "more_replies": {
+            "ban": false,
+            "tweet": "2114410057593172014",
+            "in_reply_to": "2115124781922341188"
+          }
+        },
+        "error": null,
+        "source": "scheduled"
       }
     ],
     "insanejarona": [
@@ -12744,6 +12765,27 @@
       },
       {
         "timestamp": 1793117510618,
+        "banned": false,
+        "exists": true,
+        "tests": {
+          "search": "_implied_good",
+          "typeahead": true,
+          "ghost": {
+            "ban": null,
+            "tweet": null,
+            "in_reply_to": null
+          },
+          "more_replies": {
+            "ban": null,
+            "tweet": null,
+            "in_reply_to": null
+          }
+        },
+        "error": null,
+        "source": "scheduled"
+      },
+      {
+        "timestamp": 1793120167011,
         "banned": false,
         "exists": true,
         "tests": {
@@ -19131,8 +19173,29 @@
         },
         "error": null,
         "source": "scheduled"
+      },
+      {
+        "timestamp": 1793120167011,
+        "banned": false,
+        "exists": true,
+        "tests": {
+          "search": "_implied_good",
+          "typeahead": true,
+          "ghost": {
+            "ban": false,
+            "tweet": "2114023001163219316",
+            "in_reply_to": "2114027471913762933"
+          },
+          "more_replies": {
+            "ban": false,
+            "tweet": "2114023001163219316",
+            "in_reply_to": "2114027471913762933"
+          }
+        },
+        "error": null,
+        "source": "scheduled"
       }
     ]
   },
-  "lastUpdated": 1793117510618
+  "lastUpdated": 1793120167011
 }
