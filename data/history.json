@@ -6758,6 +6758,27 @@
         },
         "error": null,
         "source": "scheduled"
+      },
+      {
+        "timestamp": 1793164815342,
+        "banned": false,
+        "exists": true,
+        "tests": {
+          "search": "_implied_good",
+          "typeahead": true,
+          "ghost": {
+            "ban": false,
+            "tweet": "2115238308670538137",
+            "in_reply_to": "2115239825724891245"
+          },
+          "more_replies": {
+            "ban": false,
+            "tweet": "2115238308670538137",
+            "in_reply_to": "2115239825724891245"
+          }
+        },
+        "error": null,
+        "source": "scheduled"
       }
     ],
     "insanejarona": [
@@ -13451,6 +13472,27 @@
         "banned": null,
         "exists": false,
         "tests": null,
+        "error": null,
+        "source": "scheduled"
+      },
+      {
+        "timestamp": 1793164815342,
+        "banned": false,
+        "exists": true,
+        "tests": {
+          "search": "_implied_good",
+          "typeahead": true,
+          "ghost": {
+            "ban": null,
+            "tweet": null,
+            "in_reply_to": null
+          },
+          "more_replies": {
+            "ban": null,
+            "tweet": null,
+            "in_reply_to": null
+          }
+        },
         "error": null,
         "source": "scheduled"
       }
@@ -20200,8 +20242,29 @@
         },
         "error": null,
         "source": "scheduled"
+      },
+      {
+        "timestamp": 1793164815342,
+        "banned": false,
+        "exists": true,
+        "tests": {
+          "search": "_implied_good",
+          "typeahead": true,
+          "ghost": {
+            "ban": null,
+            "tweet": null,
+            "in_reply_to": null
+          },
+          "more_replies": {
+            "ban": null,
+            "tweet": null,
+            "in_reply_to": null
+          }
+        },
+        "error": null,
+        "source": "scheduled"
       }
     ]
   },
-  "lastUpdated": 1793161909592
+  "lastUpdated": 1793164815342
 }
