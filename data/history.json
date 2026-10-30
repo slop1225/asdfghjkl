@@ -8063,6 +8063,27 @@
         },
         "error": null,
         "source": "scheduled"
+      },
+      {
+        "timestamp": 1793352596456,
+        "banned": false,
+        "exists": true,
+        "tests": {
+          "search": "_implied_good",
+          "typeahead": true,
+          "ghost": {
+            "ban": null,
+            "tweet": null,
+            "in_reply_to": null
+          },
+          "more_replies": {
+            "ban": null,
+            "tweet": null,
+            "in_reply_to": null
+          }
+        },
+        "error": null,
+        "source": "scheduled"
       }
     ],
     "insanejarona": [
@@ -16036,6 +16057,27 @@
         "exists": false,
         "tests": null,
         "error": "HTTP Error 503: Service Unavailable",
+        "source": "scheduled"
+      },
+      {
+        "timestamp": 1793352596456,
+        "banned": true,
+        "exists": true,
+        "tests": {
+          "search": "_error",
+          "typeahead": false,
+          "ghost": {
+            "ban": null,
+            "tweet": null,
+            "in_reply_to": null
+          },
+          "more_replies": {
+            "ban": null,
+            "tweet": null,
+            "in_reply_to": null
+          }
+        },
+        "error": null,
         "source": "scheduled"
       }
     ],
@@ -24089,8 +24131,29 @@
         "tests": null,
         "error": "HTTP Error 503: Service Unavailable",
         "source": "scheduled"
+      },
+      {
+        "timestamp": 1793352596456,
+        "banned": false,
+        "exists": true,
+        "tests": {
+          "search": "_implied_good",
+          "typeahead": true,
+          "ghost": {
+            "ban": null,
+            "tweet": null,
+            "in_reply_to": null
+          },
+          "more_replies": {
+            "ban": null,
+            "tweet": null,
+            "in_reply_to": null
+          }
+        },
+        "error": null,
+        "source": "scheduled"
       }
     ]
   },
-  "lastUpdated": 1793349008320
+  "lastUpdated": 1793352596456
 }
