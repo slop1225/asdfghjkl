@@ -8263,6 +8263,27 @@
         "tests": null,
         "error": "HTTP Error 500: Internal Server Error",
         "source": "scheduled"
+      },
+      {
+        "timestamp": 1793388107247,
+        "banned": false,
+        "exists": true,
+        "tests": {
+          "search": "_implied_good",
+          "typeahead": true,
+          "ghost": {
+            "ban": false,
+            "tweet": "2115830000054092274",
+            "in_reply_to": "2116021896781459609"
+          },
+          "more_replies": {
+            "ban": false,
+            "tweet": "2115830000054092274",
+            "in_reply_to": "2116021896781459609"
+          }
+        },
+        "error": null,
+        "source": "scheduled"
       }
     ],
     "insanejarona": [
@@ -16449,6 +16470,27 @@
         "exists": false,
         "tests": null,
         "error": "HTTP Error 503: Service Unavailable",
+        "source": "scheduled"
+      },
+      {
+        "timestamp": 1793388107247,
+        "banned": true,
+        "exists": true,
+        "tests": {
+          "search": "_error",
+          "typeahead": false,
+          "ghost": {
+            "ban": null,
+            "tweet": null,
+            "in_reply_to": null
+          },
+          "more_replies": {
+            "ban": null,
+            "tweet": null,
+            "in_reply_to": null
+          }
+        },
+        "error": null,
         "source": "scheduled"
       }
     ],
@@ -24741,8 +24783,29 @@
         "tests": null,
         "error": null,
         "source": "scheduled"
+      },
+      {
+        "timestamp": 1793388107247,
+        "banned": false,
+        "exists": true,
+        "tests": {
+          "search": "_implied_good",
+          "typeahead": true,
+          "ghost": {
+            "ban": null,
+            "tweet": null,
+            "in_reply_to": null
+          },
+          "more_replies": {
+            "ban": null,
+            "tweet": null,
+            "in_reply_to": null
+          }
+        },
+        "error": null,
+        "source": "scheduled"
       }
     ]
   },
-  "lastUpdated": 1793384999199
+  "lastUpdated": 1793388107247
 }
