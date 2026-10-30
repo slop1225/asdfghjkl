@@ -8255,6 +8255,14 @@
         },
         "error": null,
         "source": "scheduled"
+      },
+      {
+        "timestamp": 1793384999199,
+        "banned": null,
+        "exists": false,
+        "tests": null,
+        "error": "HTTP Error 500: Internal Server Error",
+        "source": "scheduled"
       }
     ],
     "insanejarona": [
@@ -16433,6 +16441,14 @@
           }
         },
         "error": null,
+        "source": "scheduled"
+      },
+      {
+        "timestamp": 1793384999199,
+        "banned": null,
+        "exists": false,
+        "tests": null,
+        "error": "HTTP Error 503: Service Unavailable",
         "source": "scheduled"
       }
     ],
@@ -24717,8 +24733,16 @@
         },
         "error": null,
         "source": "scheduled"
+      },
+      {
+        "timestamp": 1793384999199,
+        "banned": null,
+        "exists": false,
+        "tests": null,
+        "error": null,
+        "source": "scheduled"
       }
     ]
   },
-  "lastUpdated": 1793382537908
+  "lastUpdated": 1793384999199
 }
