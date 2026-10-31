@@ -125,183 +125,42 @@
     .history-item:last-child { border-bottom: none; }
     .footer { text-align: center; font-size: 0.75rem; color: var(--muted); margin-top: 2rem; }
     .footer a { color: var(--accent); text-decoration: none; }
-
-    /* Appeal generator */
-    .appeal-section {
+    .section {
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 12px;
       padding: 1.25rem;
-      margin: 1.5rem 0 0;
+      margin-top: 2rem;
     }
-    .appeal-section h2 {
-      font-size: 1.1rem;
-      font-weight: 600;
-      margin-bottom: 0.75rem;
-    }
-    .appeal-section h2 span { color: var(--accent); }
-    .appeal-hint {
-      font-size: 0.8rem;
-      color: var(--muted);
-      margin-bottom: 0.75rem;
-      line-height: 1.4;
-    }
-    .appeal-row {
-      display: flex;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-      margin-bottom: 0.75rem;
-    }
-    .appeal-row input {
-      flex: 1;
-      min-width: 200px;
+    .section h2 { font-size: 1.25rem; margin-bottom: 1rem; }
+    input, textarea {
       background: var(--bg);
       border: 1px solid var(--border);
       color: var(--text);
-      padding: 0.55rem 0.75rem;
+      padding: 0.5rem 0.75rem;
       border-radius: 8px;
-      font-size: 0.875rem;
-      font-family: inherit;
-    }
-    .appeal-row input:focus {
-      outline: none;
-      border-color: var(--accent);
-    }
-    .appeal-row button {
-      white-space: nowrap;
-    }
-    .appeal-status {
-      font-size: 0.8rem;
-      color: var(--muted);
-      min-height: 1.2em;
-      margin-bottom: 0.5rem;
-    }
-    .appeal-status.error { color: var(--bad); }
-    .appeal-status.ok { color: var(--good); }
-    .appeal-result {
-      display: none;
-      margin-top: 0.75rem;
-      padding-top: 0.75rem;
-      border-top: 1px solid var(--border);
-    }
-    .appeal-result.visible { display: block; }
-    .appeal-link-box {
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 0.6rem 0.75rem;
-      font-size: 0.75rem;
-      word-break: break-all;
-      color: var(--muted);
-      margin-bottom: 0.6rem;
-      font-family: ui-monospace, monospace;
-    }
-    .appeal-actions {
-      display: flex;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-    }
-    .appeal-meta {
-      font-size: 0.75rem;
-      color: var(--muted);
-      margin-top: 0.5rem;
-    }
-
-    /* Tweet watchlist */
-    .watch-section {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 1.25rem;
-      margin: 1.25rem 0 0;
-    }
-    .watch-section h2 {
-      font-size: 1.1rem;
-      font-weight: 600;
+      width: 100%;
+      font-size: 0.9rem;
       margin-bottom: 0.75rem;
     }
-    .watch-section h2 span { color: var(--accent); }
-    .watch-hint {
-      font-size: 0.8rem;
-      color: var(--muted);
-      margin-bottom: 0.75rem;
-      line-height: 1.4;
-    }
-    .watch-row {
+    .tweet-list { margin-top: 1rem; }
+    .tweet-item {
       display: flex;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-      margin-bottom: 0.75rem;
-    }
-    .watch-row input {
-      flex: 1;
-      min-width: 200px;
-      background: var(--bg);
-      border: 1px solid var(--border);
-      color: var(--text);
-      padding: 0.55rem 0.75rem;
-      border-radius: 8px;
-      font-size: 0.875rem;
-      font-family: inherit;
-    }
-    .watch-row input:focus {
-      outline: none;
-      border-color: var(--accent);
-    }
-    .watch-list {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 0.4rem;
-    }
-    .watch-item {
-      display: flex;
+      justify-content: space-between;
       align-items: center;
-      gap: 0.5rem;
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 0.5rem 0.65rem;
-      font-size: 0.8rem;
-    }
-    .watch-item a {
-      color: var(--accent);
-      text-decoration: none;
-      flex: 1;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-    .watch-item a:hover { text-decoration: underline; }
-    .watch-item .watch-meta {
-      color: var(--muted);
-      font-size: 0.7rem;
-      white-space: nowrap;
-    }
-    .watch-item button {
-      padding: 0.25rem 0.5rem;
-      font-size: 0.7rem;
-      background: transparent;
-      border: 1px solid var(--border);
-      color: var(--muted);
-    }
-    .watch-item button:hover {
-      border-color: var(--bad);
-      color: var(--bad);
-    }
-    .watch-actions {
-      display: flex;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-      margin-top: 0.75rem;
-    }
-    .watch-empty {
-      font-size: 0.8rem;
-      color: var(--muted);
       padding: 0.5rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.85rem;
     }
+    .appeal-result {
+      margin-top: 1rem;
+      padding: 0.75rem;
+      background: var(--bg);
+      border-radius: 8px;
+      word-break: break-all;
+      font-size: 0.8rem;
+    }
+    .appeal-result a { color: var(--accent); }
   </style>
 </head>
 <body>
@@ -310,51 +169,54 @@
       <h1>Shadowban <span>Monitor</span></h1>
       <div class="status-bar" id="lastUpdated">Loading history…</div>
       <div class="controls">
+        <input type="text" id="newAccount" placeholder="Add @username" style="width:160px;margin:0;padding:0.45rem 0.6rem">
+        <button id="addAccount">Add</button>
         <button id="checkNow">Check Now</button>
       </div>
     </header>
     <div class="grid" id="accountsGrid"></div>
-
-    <div class="appeal-section">
-      <h2>Adult Content <span>Appeal Link</span></h2>
-      <p class="appeal-hint">
-        Paste a tweet URL from one of the three accounts. The matching numeric User ID is filled in automatically.
-      </p>
-      <div class="appeal-row">
-        <input type="text" id="tweetInput" placeholder="https://x.com/keepsayingitkris/status/1234567890" autocomplete="off" spellcheck="false">
-        <button id="generateAppeal">Generate</button>
-      </div>
-      <div class="appeal-status" id="appealStatus"></div>
-      <div class="appeal-result" id="appealResult">
-        <div class="appeal-link-box" id="appealLinkText"></div>
-        <div class="appeal-actions">
-          <button id="copyAppeal">Copy link</button>
-          <button id="openAppeal">Open in browser</button>
-        </div>
-        <div class="appeal-meta" id="appealMeta"></div>
-      </div>
-    </div>
-
-    <div class="watch-section">
-      <h2>Tweet <span>Watchlist</span></h2>
-      <p class="watch-hint">
-        Shared list (saved online). Paste a tweet URL → <strong>Add</strong>.
-        <strong>Open all</strong> opens every tweet in new tabs. Use ✕ to remove.
-      </p>
-      <div class="watch-row">
-        <input type="text" id="watchInput" placeholder="https://x.com/username/status/1234567890" autocomplete="off" spellcheck="false">
-        <button id="addWatch">Add</button>
-      </div>
-      <div class="appeal-status" id="watchStatus"></div>
-      <ul class="watch-list" id="watchList"></ul>
-      <div class="watch-empty" id="watchEmpty">Loading…</div>
-      <div class="watch-actions" id="watchActions" style="display:none">
-        <button id="openAllWatch">Open all</button>
-      </div>
-    </div>
-
     <img src="img/register.png" alt="" class="secret-img" id="secretImg" title="Click">
     <audio id="sound" src="img/sound.mp3" preload="auto"></audio>
+
+    <div class="section">
+      <h2>GitHub Token (one-time setup for permanent adds/removes)</h2>
+      <p style="color:var(--muted);font-size:0.85rem;margin-bottom:1rem">
+        Create a fine-grained token at <a href="https://github.com/settings/tokens?type=beta" target="_blank">github.com/settings/tokens</a> with <strong>Contents: Read and write</strong> on this repo only.<br>
+        Paste it once — it is stored only in your browser. After that, Add and Remove will commit automatically so changes stay for everyone.
+      </p>
+      <input type="password" id="ghToken" placeholder="github_pat_... or ghp_...">
+      <button id="saveToken">Save Token</button>
+      <span id="tokenStatus" style="margin-left:0.75rem;font-size:0.85rem;color:var(--muted)"></span>
+    </div>
+
+    <div class="section">
+      <h2>GitHub Token (for automatic adds)</h2>
+      <p style="color:var(--muted);font-size:0.85rem;margin-bottom:1rem">
+        Create a fine-grained personal access token at github.com/settings/tokens with <strong>Contents: Read and write</strong> on this repo only.  
+        Paste it here once — it stays in your browser and is never sent anywhere else. Then Add will commit automatically.
+      </p>
+      <input type="password" id="ghToken" placeholder="ghp_... or github_pat_...">
+      <button id="saveToken">Save Token</button>
+      <span id="tokenStatus" style="margin-left:0.75rem;font-size:0.85rem;color:var(--muted)"></span>
+    </div>
+
+    <div class="section">
+      <h2>Tweet Sensitive Media Monitor</h2>
+      <p style="color:var(--muted);font-size:0.85rem;margin-bottom:1rem">Paste tweet URLs to track. Status is checked when the page is open (full background every 15 min is limited without an X API key).</p>
+      <textarea id="tweetInput" placeholder="Paste tweet URL(s), one per line..." rows="3"></textarea>
+      <button id="addTweets">Add Tweets</button>
+      <div id="tweetList" class="tweet-list"></div>
+    </div>
+
+    <div class="section">
+      <h2>Appeal Link Generator</h2>
+      <p style="color:var(--muted);font-size:0.85rem;margin-bottom:1rem">Generates the community appeal link for Adult Content / sensitive labels (works when no appeal button shows).</p>
+      <input type="text" id="appealTweet" placeholder="Tweet URL">
+      <input type="text" id="userId" placeholder="Your numeric user ID (from tweeterid.com)">
+      <button id="generateAppeal">Generate Appeal Link</button>
+      <div id="appealResult" class="appeal-result" style="display:none"></div>
+    </div>
+
     <div class="footer">
       Background checks via GitHub Actions · 
       <a href="https://shadowban.yuzurisa.com/" target="_blank">API</a>
@@ -362,15 +224,22 @@
   </div>
 
   <script>
-    const ACCOUNTS = [
-      { handle: 'keepsayinitkris', display: '@keepsayinitkris' },
-      { handle: 'insanejarona', display: '@insanejarona' },
-      { handle: 'keptsayinitkris', display: '@keptsayinitkris' }
-    ];
-
-    const API_BASE = 'https://shadowban-api.yuzurisa.com:444';
     let currentHistory = null;
     let manualHistory = JSON.parse(localStorage.getItem('manualHistory') || '{}');
+    let accounts = [];
+
+    const API_BASE = 'https://shadowban-api.yuzurisa.com:444';
+
+    function getAccounts(history) {
+      if (history?.trackedAccounts?.length) {
+        return history.trackedAccounts.map(h => typeof h === 'string' ? { handle: h, display: '@' + h } : h);
+      }
+      return [
+        { handle: 'keepsayinitkris', display: '@keepsayinitkris' },
+        { handle: 'insanejarona', display: '@insanejarona' },
+        { handle: 'keptsayinitkris', display: '@keptsayinitkris' }
+      ];
+    }
 
     function saveManual() {
       localStorage.setItem('manualHistory', JSON.stringify(manualHistory));
@@ -391,7 +260,7 @@
       btn.textContent = 'Checking…';
 
       try {
-        const results = await Promise.all(ACCOUNTS.map(async acc => {
+        const results = await Promise.all(accounts.map(async acc => {
           try {
             const res = await fetch(`${API_BASE}/${acc.handle}`);
             const text = await res.text();
@@ -583,7 +452,8 @@
       document.getElementById('lastUpdated').textContent = `Last updated: ${last}`;
 
       const grid = document.getElementById('accountsGrid');
-      grid.innerHTML = ACCOUNTS.map(acc => {
+      accounts = getAccounts(history);
+      grid.innerHTML = accounts.map(acc => {
         const entries = history.accounts?.[acc.handle] || [];
         const latest = entries[entries.length - 1];
         const duration = calculateDuration(entries);
@@ -641,7 +511,10 @@
           <div class="card ${statusClass}">
             <div class="card-header">
               <div class="username"><a href="https://x.com/${acc.handle}" target="_blank">${acc.display}</a></div>
-              <span class="badge ${statusClass}">${statusText}</span>
+              <div style="display:flex;gap:0.4rem;align-items:center">
+                <span class="badge ${statusClass}">${statusText}</span>
+                <button style="padding:0.2rem 0.5rem;font-size:0.7rem;background:#444" onclick="removeAccount('${acc.handle}')">✕</button>
+              </div>
             </div>
             <div class="duration ${durationClass}" ${hoverTitle ? `title="${hoverTitle}"` : ''}>${formatDuration(duration.duration)}</div>
             <div class="meta">
@@ -675,266 +548,195 @@
 
     document.getElementById('checkNow').addEventListener('click', checkNow);
 
-    // ── Adult Content Appeal Link Generator ──────────────────────────
-    const REPORT_FLOW_ID = 'd490c7f6-8975-4fa7-87d0-6fbb12335235';
-    const CLIENT_APP_ID = '3033300';
-
-    // Hardcoded numeric User IDs (case-insensitive match on username from URL)
-    const KNOWN_USER_IDS = {
-      'keepsayingitkris': '1836499036100018176',
-      'keepsayinitkris':  '1836499036100018176',
-      'insanejarona':     '1955339215966810112',
-      'keptsayinitkris':  '2109428041428434944'
-    };
-
-    function parseTweetInput(input) {
-      const s = (input || '').trim();
-      let tweetId = null;
-      let username = null;
-
-      const urlMatch = s.match(/(?:x\.com|twitter\.com)\/([A-Za-z0-9_]{1,15})\/status(?:es)?\/(\d{5,25})/i);
-      if (urlMatch) {
-        username = urlMatch[1].toLowerCase();
-        tweetId = urlMatch[2];
-      } else {
-        const idOnly = s.match(/^(\d{5,25})$/);
-        if (idOnly) tweetId = idOnly[1];
-        const statusOnly = s.match(/status(?:es)?\/(\d{5,25})/i);
-        if (statusOnly) tweetId = statusOnly[1];
+    document.getElementById('addAccount').addEventListener('click', async () => {
+      const input = document.getElementById('newAccount');
+      let handle = input.value.trim().replace(/^@/, '').toLowerCase();
+      if (!handle || !/^[a-z0-9_]{1,15}$/.test(handle)) {
+        alert('Enter a valid username (letters, numbers, underscore)');
+        return;
       }
-      return { tweetId, username };
-    }
-
-    function buildAppealLink(tweetId, userId) {
-      const params = new URLSearchParams({
-        source: 'appealtweet',
-        report_flow_id: REPORT_FLOW_ID,
-        client_app_id: CLIENT_APP_ID,
-        initiated_in_app: '1',
-        reported_tweet_id: tweetId,
-        reported_user_id: userId
-      });
-      return `https://x.com/i/safety/report_story?${params.toString()}`;
-    }
-
-    function setStatus(msg, type) {
-      const el = document.getElementById('appealStatus');
-      el.className = 'appeal-status' + (type ? ' ' + type : '');
-      el.textContent = msg || '';
-    }
-
-    function generateAppeal() {
-      const { tweetId, username } = parseTweetInput(document.getElementById('tweetInput').value);
-      const resultEl = document.getElementById('appealResult');
-      resultEl.classList.remove('visible');
-
-      if (!tweetId) {
-        setStatus('Could not find a tweet ID. Paste a full x.com/username/status/… link.', 'error');
+      if (accounts.some(a => a.handle === handle)) {
+        alert('Already tracking this account');
         return;
       }
 
-      const userId = username ? KNOWN_USER_IDS[username] : null;
-      if (!userId) {
-        setStatus(
-          username
-            ? `Unknown account @${username}. Supported: keepsayingitkris / keepsayinitkris, insanejarona, keptsayinitkris.`
-            : 'Please paste the full tweet URL (so the username is visible).',
-          'error'
-        );
+      const token = localStorage.getItem('ghToken');
+      if (!token) {
+        alert('Save a GitHub token first (see the section below) so the add can be committed globally.');
         return;
       }
 
-      const link = buildAppealLink(tweetId, userId);
-      document.getElementById('appealLinkText').textContent = link;
-      document.getElementById('appealMeta').textContent =
-        `Tweet ID: ${tweetId}  ·  @${username}  ·  User ID: ${userId}`;
-      resultEl.classList.add('visible');
-      setStatus('Appeal link ready. Open it in a desktop / private browser (not the X app).', 'ok');
-      window.__lastAppealLink = link;
-    }
-
-    document.getElementById('generateAppeal').addEventListener('click', generateAppeal);
-    document.getElementById('tweetInput').addEventListener('keydown', e => {
-      if (e.key === 'Enter') generateAppeal();
-    });
-
-    document.getElementById('copyAppeal').addEventListener('click', async () => {
-      const link = window.__lastAppealLink;
-      if (!link) return;
-      try {
-        await navigator.clipboard.writeText(link);
-        const btn = document.getElementById('copyAppeal');
-        const prev = btn.textContent;
-        btn.textContent = 'Copied!';
-        setTimeout(() => { btn.textContent = prev; }, 1500);
-      } catch {
-        prompt('Copy this link:', link);
-      }
-    });
-
-    document.getElementById('openAppeal').addEventListener('click', () => {
-      const link = window.__lastAppealLink;
-      if (link) window.open(link, '_blank', 'noopener');
-    });
-
-    // ── Tweet Watchlist (global via JSONBin) ─────────────────────────
-    const JSONBIN_ID = '6ade9bdaffd5d160538b8173';
-    const JSONBIN_KEY = '$2a$10$ZyH4tnm7VISU/Kx94T0d8.BqCnvEmQWRcDfwmVXPEw9RHoDsjp4bm';
-    const JSONBIN_URL = `https://api.jsonbin.io/v3/b/${JSONBIN_ID}`;
-
-    let watchlist = [];
-
-    function renderWatchlist() {
-      const list = document.getElementById('watchList');
-      const empty = document.getElementById('watchEmpty');
-      const actions = document.getElementById('watchActions');
-      list.innerHTML = '';
-
-      const items = watchlist.filter(w => w.tweetId && w.tweetId !== '0');
-
-      if (!items.length) {
-        empty.style.display = 'block';
-        empty.textContent = 'No tweets in the list yet.';
-        actions.style.display = 'none';
-        return;
-      }
-      empty.style.display = 'none';
-      actions.style.display = 'flex';
-
-      items.forEach((item, i) => {
-        const li = document.createElement('li');
-        li.className = 'watch-item';
-        const handle = item.username ? '@' + item.username : '';
-        li.innerHTML = `
-          <a href="${item.url}" target="_blank" rel="noopener">${item.url}</a>
-          <span class="watch-meta">${handle}</span>
-          <button type="button" data-i="${i}" title="Remove">✕</button>
-        `;
-        list.appendChild(li);
-      });
-
-      list.querySelectorAll('button[data-i]').forEach(btn => {
-        btn.addEventListener('click', () => removeFromWatchlist(Number(btn.dataset.i)));
-      });
-    }
-
-    async function loadWatchlist() {
-      const empty = document.getElementById('watchEmpty');
-      empty.textContent = 'Loading…';
-      try {
-        const res = await fetch(`${JSONBIN_URL}/latest`, {
-          headers: { 'X-Master-Key': JSONBIN_KEY }
-        });
-        if (!res.ok) throw new Error('HTTP ' + res.status);
-        const data = await res.json();
-        watchlist = Array.isArray(data.record) ? data.record : [];
-      } catch (e) {
-        watchlist = [];
-        empty.textContent = 'Could not load watchlist.';
-        console.error(e);
-      }
-      renderWatchlist();
-    }
-
-    async function saveWatchlist() {
-      const res = await fetch(JSONBIN_URL, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-          'X-Master-Key': JSONBIN_KEY
-        },
-        body: JSON.stringify(watchlist)
-      });
-      if (!res.ok) throw new Error('HTTP ' + res.status);
-    }
-
-    async function addToWatchlist() {
-      const raw = document.getElementById('watchInput').value.trim();
-      const statusEl = document.getElementById('watchStatus');
-      const btn = document.getElementById('addWatch');
-      statusEl.className = 'appeal-status';
-      statusEl.textContent = '';
-
-      if (!raw) return;
-
-      const info = parseTweetInput(raw);
-      if (!info.tweetId) {
-        statusEl.className = 'appeal-status error';
-        statusEl.textContent = 'Could not find a tweet ID. Paste a full x.com/…/status/… link.';
-        return;
-      }
-
-      const username = info.username || '';
-      const url = username
-        ? `https://x.com/${username}/status/${info.tweetId}`
-        : `https://x.com/i/status/${info.tweetId}`;
-
-      if (watchlist.some(w => w.tweetId === info.tweetId)) {
-        statusEl.className = 'appeal-status error';
-        statusEl.textContent = 'Already in the list.';
-        return;
-      }
-
+      const btn = document.getElementById('addAccount');
       btn.disabled = true;
       btn.textContent = 'Adding…';
 
       try {
-        watchlist = watchlist.filter(w => w.tweetId && w.tweetId !== '0');
-        watchlist.unshift({
-          tweetId: info.tweetId,
-          username,
-          url,
-          added: new Date().toISOString()
+        // Get current file
+        const fileRes = await fetch('https://api.github.com/repos/slop1225/asdfghjkl/contents/data/history.json', {
+          headers: { Authorization: `Bearer ${token}`, Accept: 'application/vnd.github+json' }
         });
-        await saveWatchlist();
-        renderWatchlist();
-        statusEl.className = 'appeal-status ok';
-        statusEl.textContent = 'Added.';
-        document.getElementById('watchInput').value = '';
-      } catch (e) {
-        statusEl.className = 'appeal-status error';
-        statusEl.textContent = 'Failed to save: ' + (e.message || e);
-        watchlist.shift();
+        if (!fileRes.ok) throw new Error('Failed to read history.json (check token permissions)');
+        const fileData = await fileRes.json();
+        const content = JSON.parse(atob(fileData.content.replace(/\n/g, '')));
+
+        if (!content.trackedAccounts) content.trackedAccounts = [];
+        if (!content.trackedAccounts.includes(handle)) {
+          content.trackedAccounts.push(handle);
+        }
+        if (!content.accounts) content.accounts = {};
+        if (!content.accounts[handle]) content.accounts[handle] = [];
+
+        const newContent = btoa(unescape(encodeURIComponent(JSON.stringify(content, null, 2))));
+
+        const updateRes = await fetch('https://api.github.com/repos/slop1225/asdfghjkl/contents/data/history.json', {
+          method: 'PUT',
+          headers: {
+            Authorization: `Bearer ${token}`,
+            Accept: 'application/vnd.github+json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            message: `Add tracked account @${handle}`,
+            content: newContent,
+            sha: fileData.sha
+          })
+        });
+
+        if (!updateRes.ok) throw new Error('Failed to commit (token may lack write permission)');
+
+        // Update local view immediately
+        if (!currentHistory) currentHistory = content;
+        else {
+          currentHistory.trackedAccounts = content.trackedAccounts;
+          currentHistory.accounts = content.accounts;
+        }
+        accounts = getAccounts(currentHistory);
+        render(currentHistory);
+        input.value = '';
+        alert(`@${handle} added and committed. The next scheduled check will include it.`);
+      } catch (err) {
+        alert('Add failed: ' + err.message);
       } finally {
         btn.disabled = false;
         btn.textContent = 'Add';
       }
-    }
+    });
 
-    async function removeFromWatchlist(visibleIndex) {
-      const items = watchlist.filter(w => w.tweetId && w.tweetId !== '0');
-      const target = items[visibleIndex];
-      if (!target) return;
-      watchlist = watchlist.filter(w => w.tweetId !== target.tweetId);
-      try {
-        await saveWatchlist();
-        renderWatchlist();
-      } catch (e) {
-        document.getElementById('watchStatus').className = 'appeal-status error';
-        document.getElementById('watchStatus').textContent = 'Failed to remove.';
-        loadWatchlist();
+    window.removeAccount = async (handle) => {
+      if (!confirm(`Stop tracking @${handle}?`)) return;
+      const token = localStorage.getItem('ghToken');
+      if (!token) {
+        alert('Save a GitHub token first.');
+        return;
       }
+      try {
+        const fileRes = await fetch('https://api.github.com/repos/slop1225/asdfghjkl/contents/data/history.json', {
+          headers: { Authorization: `Bearer ${token}`, Accept: 'application/vnd.github+json' }
+        });
+        if (!fileRes.ok) throw new Error('Failed to read history.json');
+        const fileData = await fileRes.json();
+        const content = JSON.parse(atob(fileData.content.replace(/\n/g, '')));
+
+        content.trackedAccounts = (content.trackedAccounts || []).filter(h => h !== handle);
+
+        const newContent = btoa(unescape(encodeURIComponent(JSON.stringify(content, null, 2))));
+        const updateRes = await fetch('https://api.github.com/repos/slop1225/asdfghjkl/contents/data/history.json', {
+          method: 'PUT',
+          headers: {
+            Authorization: `Bearer ${token}`,
+            Accept: 'application/vnd.github+json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            message: `Remove tracked account @${handle}`,
+            content: newContent,
+            sha: fileData.sha
+          })
+        });
+        if (!updateRes.ok) throw new Error('Failed to commit');
+
+        if (currentHistory) {
+          currentHistory.trackedAccounts = content.trackedAccounts;
+        }
+        accounts = getAccounts(currentHistory || content);
+        render(currentHistory || content);
+      } catch (err) {
+        alert('Remove failed: ' + err.message);
+      }
+    };
+
+    // Token save
+    const tokenInput = document.getElementById('ghToken');
+    const tokenStatus = document.getElementById('tokenStatus');
+    if (localStorage.getItem('ghToken')) {
+      tokenStatus.textContent = 'Token saved';
+      tokenStatus.style.color = 'var(--good)';
+    }
+    document.getElementById('saveToken').addEventListener('click', () => {
+      const t = tokenInput.value.trim();
+      if (!t) return;
+      localStorage.setItem('ghToken', t);
+      tokenStatus.textContent = 'Token saved';
+      tokenStatus.style.color = 'var(--good)';
+      tokenInput.value = '';
+    });
+
+    // Tweet monitor
+    let trackedTweets = JSON.parse(localStorage.getItem('trackedTweets') || '[]');
+
+    function renderTweets() {
+      const list = document.getElementById('tweetList');
+      list.innerHTML = trackedTweets.map((t, i) => `
+        <div class="tweet-item">
+          <a href="${t.url}" target="_blank">${t.id}</a>
+          <span style="color:${t.sensitive === true ? 'var(--bad)' : t.sensitive === false ? 'var(--good)' : 'var(--muted)'}">
+            ${t.sensitive === true ? 'Sensitive' : t.sensitive === false ? 'Clear' : 'Unknown'}
+          </span>
+          <button style="padding:0.25rem 0.5rem;font-size:0.75rem" onclick="removeTweet(${i})">Remove</button>
+        </div>
+      `).join('') || '<div class="meta">No tweets tracked</div>';
     }
 
-    document.getElementById('addWatch').addEventListener('click', addToWatchlist);
-    document.getElementById('watchInput').addEventListener('keydown', e => {
-      if (e.key === 'Enter') addToWatchlist();
+    function removeTweet(i) {
+      trackedTweets.splice(i, 1);
+      localStorage.setItem('trackedTweets', JSON.stringify(trackedTweets));
+      renderTweets();
+    }
+    window.removeTweet = removeTweet;
+
+    document.getElementById('addTweets').addEventListener('click', () => {
+      const text = document.getElementById('tweetInput').value;
+      const urls = text.split(/\s+/).filter(u => u.includes('/status/'));
+      for (const url of urls) {
+        const match = url.match(/status\/(\d+)/);
+        if (match && !trackedTweets.find(t => t.id === match[1])) {
+          trackedTweets.push({ id: match[1], url, sensitive: null, lastChecked: null });
+        }
+      }
+      localStorage.setItem('trackedTweets', JSON.stringify(trackedTweets));
+      document.getElementById('tweetInput').value = '';
+      renderTweets();
     });
 
-    document.getElementById('openAllWatch').addEventListener('click', () => {
-      const items = watchlist.filter(w => w.tweetId && w.tweetId !== '0');
-      if (!items.length) return;
-      items.forEach((item, i) => {
-        setTimeout(() => window.open(item.url, '_blank', 'noopener'), i * 150);
-      });
+    // Appeal generator
+    document.getElementById('generateAppeal').addEventListener('click', () => {
+      const tweetUrl = document.getElementById('appealTweet').value.trim();
+      const userId = document.getElementById('userId').value.trim();
+      const match = tweetUrl.match(/status\/(\d+)/);
+      if (!match || !userId) {
+        alert('Need a valid tweet URL and numeric user ID');
+        return;
+      }
+      const tweetId = match[1];
+      const link = `https://x.com/i/safety/report_story?source=appealtweet&report_flow_id=d490c7f6-8975-4fa7-87d0-6fbb12335235&client_app_id=3033300&initiated_in_app=1&reported_tweet_id=${tweetId}&reported_user_id=${userId}`;
+      const result = document.getElementById('appealResult');
+      result.style.display = 'block';
+      result.innerHTML = `<strong>Appeal link:</strong><br><a href="${link}" target="_blank">${link}</a><br><br>Open in a private browser window (not the X app), log in, then appeal.`;
     });
 
-    loadWatchlist();
-
-    // Secret image audio toggle (half volume)
+    // Secret image audio toggle
     let audioPlaying = false;
     const audio = document.getElementById('sound');
-    audio.volume = 0.5;
     document.getElementById('secretImg').addEventListener('click', () => {
       if (!audioPlaying) {
         audio.currentTime = 0;
@@ -949,6 +751,7 @@
     audio.addEventListener('ended', () => { audioPlaying = false; });
 
     load();
+    renderTweets();
     // Refresh the display every minute so durations stay accurate
     setInterval(load, 60 * 1000);
   </script>
