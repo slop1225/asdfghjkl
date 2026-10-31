@@ -7,10 +7,36 @@ import urllib.request
 import urllib.error
 from pathlib import Path
 
-ACCOUNTS = ["keepsayinitkris", "insanejarona", "keptsayinitkris"]
+ACCOUNTS = ["keepsayinitkris", "insanejarona", "keptsayinitkris"]  # fallback
 API = "https://shadowban-api.yuzurisa.com:444/{}"
 HISTORY_PATH = Path("data/history.json")
 MAX_ENTRIES = 2000
+
+def load_accounts(history):
+    tracked = history.get("trackedAccounts")
+    if isinstance(tracked, list) and tracked:
+        return [a if isinstance(a, str) else a.get("handle") for a in tracked if a]
+    return ACCOUNTS
+
+def main():
+    history = {"accounts": {}, "lastUpdated": None, "trackedAccounts": ACCOUNTS}
+    if HISTORY_PATH.exists():
+        try:
+            history = json.loads(HISTORY_PATH.read_text())
+        except Exception:
+            pass
+
+    accounts = load_accounts(history)
+    # Ensure tracked list is saved
+    history["trackedAccounts"] = accounts
+
+    now = int(time.time() * 1000)
+    any_success = False
+
+    for handle in accounts:
+        if not handle:
+            continue
+        data = fetch(handle)
 
 def fetch(handle: str, retries: int = 2) -> dict:
     url = API.format(handle)
