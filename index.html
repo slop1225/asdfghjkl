@@ -179,28 +179,6 @@
     <audio id="sound" src="img/sound.mp3" preload="auto"></audio>
 
     <div class="section">
-      <h2>GitHub Token (one-time setup for permanent adds/removes)</h2>
-      <p style="color:var(--muted);font-size:0.85rem;margin-bottom:1rem">
-        Create a fine-grained token at <a href="https://github.com/settings/tokens?type=beta" target="_blank">github.com/settings/tokens</a> with <strong>Contents: Read and write</strong> on this repo only.<br>
-        Paste it once — it is stored only in your browser. After that, Add and Remove will commit automatically so changes stay for everyone.
-      </p>
-      <input type="password" id="ghToken" placeholder="github_pat_... or ghp_...">
-      <button id="saveToken">Save Token</button>
-      <span id="tokenStatus" style="margin-left:0.75rem;font-size:0.85rem;color:var(--muted)"></span>
-    </div>
-
-    <div class="section">
-      <h2>GitHub Token (for automatic adds)</h2>
-      <p style="color:var(--muted);font-size:0.85rem;margin-bottom:1rem">
-        Create a fine-grained personal access token at github.com/settings/tokens with <strong>Contents: Read and write</strong> on this repo only.  
-        Paste it here once — it stays in your browser and is never sent anywhere else. Then Add will commit automatically.
-      </p>
-      <input type="password" id="ghToken" placeholder="ghp_... or github_pat_...">
-      <button id="saveToken">Save Token</button>
-      <span id="tokenStatus" style="margin-left:0.75rem;font-size:0.85rem;color:var(--muted)"></span>
-    </div>
-
-    <div class="section">
       <h2>Tweet Sensitive Media Monitor</h2>
       <p style="color:var(--muted);font-size:0.85rem;margin-bottom:1rem">Paste tweet URLs to track. Status is checked when the page is open (full background every 15 min is limited without an X API key).</p>
       <textarea id="tweetInput" placeholder="Paste tweet URL(s), one per line..." rows="3"></textarea>
@@ -210,12 +188,24 @@
 
     <div class="section">
       <h2>Appeal Link Generator</h2>
-      <p style="color:var(--muted);font-size:0.85rem;margin-bottom:1rem">Generates the community appeal link for Adult Content / sensitive labels (works when no appeal button shows).</p>
+      <p style="color:var(--muted);font-size:0.85rem;margin-bottom:1rem">Paste a tweet URL from one of the tracked accounts. The user ID is filled automatically.</p>
       <input type="text" id="appealTweet" placeholder="Tweet URL">
-      <input type="text" id="userId" placeholder="Your numeric user ID (from tweeterid.com)">
       <button id="generateAppeal">Generate Appeal Link</button>
       <div id="appealResult" class="appeal-result" style="display:none"></div>
     </div>
+
+    <details class="section" style="margin-top:1.5rem">
+      <summary style="cursor:pointer;font-weight:600;font-size:1.1rem">GitHub Token (one-time setup)</summary>
+      <div style="margin-top:1rem">
+        <p style="color:var(--muted);font-size:0.85rem;margin-bottom:1rem">
+          Create a fine-grained token at <a href="https://github.com/settings/tokens?type=beta" target="_blank">github.com/settings/tokens</a> with <strong>Contents: Read and write</strong> on this repo only.<br>
+          Paste it once — it is stored only in your browser. After that, Add and Remove will commit automatically.
+        </p>
+        <input type="password" id="ghToken" placeholder="github_pat_... or ghp_...">
+        <button id="saveToken">Save Token</button>
+        <span id="tokenStatus" style="margin-left:0.75rem;font-size:0.85rem;color:var(--muted)"></span>
+      </div>
+    </details>
 
     <div class="footer">
       Background checks via GitHub Actions · 
@@ -718,20 +708,31 @@
       renderTweets();
     });
 
+    const KNOWN_IDS = {
+      'keepsayinitkris': '1836499036100018176',
+      'insanejarona': '1955339215966810112',
+      'keptsayinitkris': '2109428041428434944'
+    };
+
     // Appeal generator
     document.getElementById('generateAppeal').addEventListener('click', () => {
       const tweetUrl = document.getElementById('appealTweet').value.trim();
-      const userId = document.getElementById('userId').value.trim();
-      const match = tweetUrl.match(/status\/(\d+)/);
-      if (!match || !userId) {
-        alert('Need a valid tweet URL and numeric user ID');
+      const match = tweetUrl.match(/(?:x\.com|twitter\.com)\/([a-zA-Z0-9_]+)\/status\/(\d+)/i);
+      if (!match) {
+        alert('Paste a valid tweet URL');
         return;
       }
-      const tweetId = match[1];
+      const handle = match[1].toLowerCase();
+      const tweetId = match[2];
+      const userId = KNOWN_IDS[handle];
+      if (!userId) {
+        alert('This tweet is not from one of the three known accounts');
+        return;
+      }
       const link = `https://x.com/i/safety/report_story?source=appealtweet&report_flow_id=d490c7f6-8975-4fa7-87d0-6fbb12335235&client_app_id=3033300&initiated_in_app=1&reported_tweet_id=${tweetId}&reported_user_id=${userId}`;
       const result = document.getElementById('appealResult');
       result.style.display = 'block';
-      result.innerHTML = `<strong>Appeal link:</strong><br><a href="${link}" target="_blank">${link}</a><br><br>Open in a private browser window (not the X app), log in, then appeal.`;
+      result.innerHTML = `<strong>Appeal link for @${handle}:</strong><br><a href="${link}" target="_blank">${link}</a><br><br>Open in a private browser window (not the X app), log in, then appeal.`;
     });
 
     // Secret image audio toggle
