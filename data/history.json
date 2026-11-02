@@ -10012,6 +10012,14 @@
         },
         "error": null,
         "source": "scheduled"
+      },
+      {
+        "timestamp": 1793607794130,
+        "banned": null,
+        "exists": false,
+        "tests": null,
+        "error": "HTTP Error 503: Service Unavailable",
+        "source": "scheduled"
       }
     ],
     "insanejarona": [
@@ -19934,6 +19942,14 @@
           }
         },
         "error": null,
+        "source": "scheduled"
+      },
+      {
+        "timestamp": 1793607794130,
+        "banned": null,
+        "exists": false,
+        "tests": null,
+        "error": "HTTP Error 500: Internal Server Error",
         "source": "scheduled"
       }
     ],
@@ -29923,6 +29939,14 @@
         },
         "error": null,
         "source": "scheduled"
+      },
+      {
+        "timestamp": 1793607794130,
+        "banned": null,
+        "exists": false,
+        "tests": null,
+        "error": "HTTP Error 503: Service Unavailable",
+        "source": "scheduled"
       }
     ],
     "wollowg857": [
@@ -31296,6 +31320,27 @@
         },
         "error": null,
         "source": "scheduled"
+      },
+      {
+        "timestamp": 1793607794130,
+        "banned": true,
+        "exists": true,
+        "tests": {
+          "search": false,
+          "typeahead": false,
+          "ghost": {
+            "ban": false,
+            "tweet": "2114026629588554043",
+            "in_reply_to": "2115742919088890001"
+          },
+          "more_replies": {
+            "ban": false,
+            "tweet": "2114026629588554043",
+            "in_reply_to": "2115742919088890001"
+          }
+        },
+        "error": null,
+        "source": "scheduled"
       }
     ],
     "meowmwmrrrrrrrr": [
@@ -31674,7 +31719,7 @@
       }
     ]
   },
-  "lastUpdated": 1793602720062,
+  "lastUpdated": 1793607794130,
   "trackedAccounts": [
     "keepsayinitkris",
     "keptsayinitkris",
