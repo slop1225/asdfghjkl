@@ -10120,6 +10120,14 @@
         },
         "error": null,
         "source": "scheduled"
+      },
+      {
+        "timestamp": 1793633661104,
+        "banned": null,
+        "exists": false,
+        "tests": null,
+        "error": "HTTP Error 500: Internal Server Error",
+        "source": "scheduled"
       }
     ],
     "insanejarona": [
@@ -20159,6 +20167,27 @@
       },
       {
         "timestamp": 1793630282305,
+        "banned": true,
+        "exists": true,
+        "tests": {
+          "search": false,
+          "typeahead": false,
+          "ghost": {
+            "ban": false,
+            "tweet": "2115287930201919909",
+            "in_reply_to": "2115291479279317140"
+          },
+          "more_replies": {
+            "ban": false,
+            "tweet": "2115287930201919909",
+            "in_reply_to": "2115291479279317140"
+          }
+        },
+        "error": null,
+        "source": "scheduled"
+      },
+      {
+        "timestamp": 1793633661104,
         "banned": true,
         "exists": true,
         "tests": {
@@ -30299,6 +30328,14 @@
         },
         "error": null,
         "source": "scheduled"
+      },
+      {
+        "timestamp": 1793633661104,
+        "banned": null,
+        "exists": false,
+        "tests": null,
+        "error": "HTTP Error 500: Internal Server Error",
+        "source": "scheduled"
       }
     ],
     "wollowg857": [
@@ -31819,6 +31856,14 @@
         },
         "error": null,
         "source": "scheduled"
+      },
+      {
+        "timestamp": 1793633661104,
+        "banned": null,
+        "exists": false,
+        "tests": null,
+        "error": "HTTP Error 500: Internal Server Error",
+        "source": "scheduled"
       }
     ],
     "meowmwmrrrrrrrr": [
@@ -32197,7 +32242,7 @@
       }
     ]
   },
-  "lastUpdated": 1793630282305,
+  "lastUpdated": 1793633661104,
   "trackedAccounts": [
     "keepsayinitkris",
     "keptsayinitkris",
