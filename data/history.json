@@ -10396,6 +10396,27 @@
         "tests": null,
         "error": "HTTP Error 503: Service Unavailable",
         "source": "scheduled"
+      },
+      {
+        "timestamp": 1793679932680,
+        "banned": false,
+        "exists": true,
+        "tests": {
+          "search": "_implied_good",
+          "typeahead": true,
+          "ghost": {
+            "ban": false,
+            "tweet": "2117414905687195757",
+            "in_reply_to": "2117421050862714943"
+          },
+          "more_replies": {
+            "ban": false,
+            "tweet": "2117414905687195757",
+            "in_reply_to": "2117421050862714943"
+          }
+        },
+        "error": null,
+        "source": "scheduled"
       }
     ],
     "insanejarona": [
@@ -20738,6 +20759,27 @@
             "ban": false,
             "tweet": "2115287930201919909",
             "in_reply_to": "2115291479279317140"
+          }
+        },
+        "error": null,
+        "source": "scheduled"
+      },
+      {
+        "timestamp": 1793679932680,
+        "banned": true,
+        "exists": true,
+        "tests": {
+          "search": "_error",
+          "typeahead": false,
+          "ghost": {
+            "ban": null,
+            "tweet": null,
+            "in_reply_to": null
+          },
+          "more_replies": {
+            "ban": null,
+            "tweet": null,
+            "in_reply_to": null
           }
         },
         "error": null,
@@ -31127,6 +31169,14 @@
         "tests": null,
         "error": "The read operation timed out",
         "source": "scheduled"
+      },
+      {
+        "timestamp": 1793679932680,
+        "banned": null,
+        "exists": false,
+        "tests": null,
+        "error": "HTTP Error 503: Service Unavailable",
+        "source": "scheduled"
       }
     ],
     "wollowg857": [
@@ -32936,6 +32986,14 @@
         },
         "error": null,
         "source": "scheduled"
+      },
+      {
+        "timestamp": 1793679932680,
+        "banned": null,
+        "exists": false,
+        "tests": null,
+        "error": "HTTP Error 503: Service Unavailable",
+        "source": "scheduled"
       }
     ],
     "meowmwmrrrrrrrr": [
@@ -33314,7 +33372,7 @@
       }
     ]
   },
-  "lastUpdated": 1793676606248,
+  "lastUpdated": 1793679932680,
   "trackedAccounts": [
     "keepsayinitkris",
     "keptsayinitkris",
