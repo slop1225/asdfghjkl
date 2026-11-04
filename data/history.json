@@ -11306,6 +11306,14 @@
         },
         "error": null,
         "source": "scheduled"
+      },
+      {
+        "timestamp": 1793827033866,
+        "banned": null,
+        "exists": false,
+        "tests": null,
+        "error": "API returned non-JSON (likely temporary error)",
+        "source": "manual"
       }
     ],
     "insanejarona": [
@@ -22575,6 +22583,27 @@
         },
         "error": null,
         "source": "scheduled"
+      },
+      {
+        "timestamp": 1793827034990,
+        "banned": false,
+        "exists": true,
+        "tests": {
+          "search": "_implied_good",
+          "typeahead": true,
+          "ghost": {
+            "ban": false,
+            "tweet": "2118043811184353281",
+            "in_reply_to": "2118044441634320517"
+          },
+          "more_replies": {
+            "ban": false,
+            "tweet": "2118043811184353281",
+            "in_reply_to": "2118044441634320517"
+          }
+        },
+        "error": null,
+        "source": "manual"
       }
     ],
     "keptsayinitkris": [
@@ -33883,6 +33912,27 @@
         },
         "error": null,
         "source": "scheduled"
+      },
+      {
+        "timestamp": 1793827035065,
+        "banned": false,
+        "exists": true,
+        "tests": {
+          "search": "_implied_good",
+          "typeahead": true,
+          "ghost": {
+            "ban": false,
+            "tweet": "2115389986698592561",
+            "in_reply_to": "2115400513554653269"
+          },
+          "more_replies": {
+            "ban": false,
+            "tweet": "2115389986698592561",
+            "in_reply_to": "2115400513554653269"
+          }
+        },
+        "error": null,
+        "source": "manual"
       }
     ],
     "wollowg857": [
@@ -36720,7 +36770,7 @@
       }
     ]
   },
-  "lastUpdated": 1793824159329,
+  "lastUpdated": 1793827035065,
   "trackedAccounts": [
     "keepsayinitkris",
     "keptsayinitkris",
