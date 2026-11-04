@@ -11143,6 +11143,27 @@
         "tests": null,
         "error": "API returned non-JSON (likely temporary error)",
         "source": "manual"
+      },
+      {
+        "timestamp": 1793812264189,
+        "banned": false,
+        "exists": true,
+        "tests": {
+          "search": "_implied_good",
+          "typeahead": true,
+          "ghost": {
+            "ban": null,
+            "tweet": null,
+            "in_reply_to": null
+          },
+          "more_replies": {
+            "ban": null,
+            "tweet": null,
+            "in_reply_to": null
+          }
+        },
+        "error": null,
+        "source": "manual"
       }
     ],
     "insanejarona": [
@@ -22218,6 +22239,27 @@
       },
       {
         "timestamp": 1793811947258,
+        "banned": false,
+        "exists": true,
+        "tests": {
+          "search": "_implied_good",
+          "typeahead": true,
+          "ghost": {
+            "ban": false,
+            "tweet": "2115287930201919909",
+            "in_reply_to": "2115291479279317140"
+          },
+          "more_replies": {
+            "ban": false,
+            "tweet": "2115287930201919909",
+            "in_reply_to": "2115291479279317140"
+          }
+        },
+        "error": null,
+        "source": "manual"
+      },
+      {
+        "timestamp": 1793812263347,
         "banned": false,
         "exists": true,
         "tests": {
@@ -33381,6 +33423,27 @@
         "tests": null,
         "error": "API returned non-JSON (likely temporary error)",
         "source": "manual"
+      },
+      {
+        "timestamp": 1793812264952,
+        "banned": false,
+        "exists": true,
+        "tests": {
+          "search": "_implied_good",
+          "typeahead": true,
+          "ghost": {
+            "ban": false,
+            "tweet": "2115389986698592561",
+            "in_reply_to": "2115400513554653269"
+          },
+          "more_replies": {
+            "ban": false,
+            "tweet": "2115389986698592561",
+            "in_reply_to": "2115400513554653269"
+          }
+        },
+        "error": null,
+        "source": "manual"
       }
     ],
     "wollowg857": [
@@ -36218,7 +36281,7 @@
       }
     ]
   },
-  "lastUpdated": 1793811995640,
+  "lastUpdated": 1793812264952,
   "trackedAccounts": [
     "keepsayinitkris",
     "keptsayinitkris",
