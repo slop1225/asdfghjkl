@@ -11343,6 +11343,27 @@
         "tests": null,
         "error": "API returned non-JSON (likely temporary error)",
         "source": "manual"
+      },
+      {
+        "timestamp": 1793827432027,
+        "banned": false,
+        "exists": true,
+        "tests": {
+          "search": "_implied_good",
+          "typeahead": true,
+          "ghost": {
+            "ban": false,
+            "tweet": "2118043473085702183",
+            "in_reply_to": "2118046223068516361"
+          },
+          "more_replies": {
+            "ban": false,
+            "tweet": "2118043473085702183",
+            "in_reply_to": "2118046223068516361"
+          }
+        },
+        "error": null,
+        "source": "manual"
       }
     ],
     "insanejarona": [
@@ -22657,6 +22678,27 @@
       },
       {
         "timestamp": 1793827426481,
+        "banned": false,
+        "exists": true,
+        "tests": {
+          "search": "_implied_good",
+          "typeahead": true,
+          "ghost": {
+            "ban": false,
+            "tweet": "2118043811184353281",
+            "in_reply_to": "2118044441634320517"
+          },
+          "more_replies": {
+            "ban": false,
+            "tweet": "2118043811184353281",
+            "in_reply_to": "2118044441634320517"
+          }
+        },
+        "error": null,
+        "source": "manual"
+      },
+      {
+        "timestamp": 1793827432036,
         "banned": false,
         "exists": true,
         "tests": {
@@ -34033,6 +34075,27 @@
         "tests": null,
         "error": "API returned non-JSON (likely temporary error)",
         "source": "manual"
+      },
+      {
+        "timestamp": 1793827432054,
+        "banned": false,
+        "exists": true,
+        "tests": {
+          "search": "_implied_good",
+          "typeahead": true,
+          "ghost": {
+            "ban": false,
+            "tweet": "2115389986698592561",
+            "in_reply_to": "2115400513554653269"
+          },
+          "more_replies": {
+            "ban": false,
+            "tweet": "2115389986698592561",
+            "in_reply_to": "2115400513554653269"
+          }
+        },
+        "error": null,
+        "source": "manual"
       }
     ],
     "wollowg857": [
@@ -36870,7 +36933,7 @@
       }
     ]
   },
-  "lastUpdated": 1793827426481,
+  "lastUpdated": 1793827432054,
   "trackedAccounts": [
     "keepsayinitkris",
     "keptsayinitkris",
