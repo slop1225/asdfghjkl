@@ -11135,6 +11135,14 @@
         "tests": null,
         "error": "HTTP Error 500: Internal Server Error",
         "source": "scheduled"
+      },
+      {
+        "timestamp": 1793811995640,
+        "banned": null,
+        "exists": false,
+        "tests": null,
+        "error": "API returned non-JSON (likely temporary error)",
+        "source": "manual"
       }
     ],
     "insanejarona": [
@@ -22207,6 +22215,27 @@
         },
         "error": null,
         "source": "scheduled"
+      },
+      {
+        "timestamp": 1793811947258,
+        "banned": false,
+        "exists": true,
+        "tests": {
+          "search": "_implied_good",
+          "typeahead": true,
+          "ghost": {
+            "ban": false,
+            "tweet": "2115287930201919909",
+            "in_reply_to": "2115291479279317140"
+          },
+          "more_replies": {
+            "ban": false,
+            "tweet": "2115287930201919909",
+            "in_reply_to": "2115291479279317140"
+          }
+        },
+        "error": null,
+        "source": "manual"
       }
     ],
     "keptsayinitkris": [
@@ -33344,6 +33373,14 @@
         },
         "error": null,
         "source": "scheduled"
+      },
+      {
+        "timestamp": 1793811986868,
+        "banned": null,
+        "exists": false,
+        "tests": null,
+        "error": "API returned non-JSON (likely temporary error)",
+        "source": "manual"
       }
     ],
     "wollowg857": [
@@ -36181,7 +36218,7 @@
       }
     ]
   },
-  "lastUpdated": 1793811858010,
+  "lastUpdated": 1793811995640,
   "trackedAccounts": [
     "keepsayinitkris",
     "keptsayinitkris",
