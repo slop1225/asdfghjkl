@@ -11235,6 +11235,14 @@
         },
         "error": null,
         "source": "manual"
+      },
+      {
+        "timestamp": 1793817321105,
+        "banned": null,
+        "exists": false,
+        "tests": null,
+        "error": "API returned non-JSON (likely temporary error)",
+        "source": "manual"
       }
     ],
     "insanejarona": [
@@ -22432,6 +22440,14 @@
           }
         },
         "error": null,
+        "source": "manual"
+      },
+      {
+        "timestamp": 1793817329632,
+        "banned": null,
+        "exists": false,
+        "tests": null,
+        "error": "API returned non-JSON (likely temporary error)",
         "source": "manual"
       }
     ],
@@ -33670,6 +33686,27 @@
         "tests": null,
         "error": "API returned non-JSON (likely temporary error)",
         "source": "manual"
+      },
+      {
+        "timestamp": 1793817301189,
+        "banned": false,
+        "exists": true,
+        "tests": {
+          "search": "_implied_good",
+          "typeahead": true,
+          "ghost": {
+            "ban": false,
+            "tweet": "2115389986698592561",
+            "in_reply_to": "2115400513554653269"
+          },
+          "more_replies": {
+            "ban": false,
+            "tweet": "2115389986698592561",
+            "in_reply_to": "2115400513554653269"
+          }
+        },
+        "error": null,
+        "source": "manual"
       }
     ],
     "wollowg857": [
@@ -36507,7 +36544,7 @@
       }
     ]
   },
-  "lastUpdated": 1793817296671,
+  "lastUpdated": 1793817329632,
   "trackedAccounts": [
     "keepsayinitkris",
     "keptsayinitkris",
