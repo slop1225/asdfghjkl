@@ -11522,6 +11522,14 @@
         "tests": null,
         "error": "HTTP Error 503: Service Unavailable",
         "source": "scheduled"
+      },
+      {
+        "timestamp": 1793846480211,
+        "banned": null,
+        "exists": false,
+        "tests": null,
+        "error": "API returned non-JSON (likely temporary error)",
+        "source": "manual"
       }
     ],
     "insanejarona": [
@@ -23046,6 +23054,14 @@
         "tests": null,
         "error": "HTTP Error 500: Internal Server Error",
         "source": "scheduled"
+      },
+      {
+        "timestamp": 1793846480212,
+        "banned": null,
+        "exists": false,
+        "tests": null,
+        "error": "API returned non-JSON (likely temporary error)",
+        "source": "manual"
       }
     ],
     "keptsayinitkris": [
@@ -34609,6 +34625,14 @@
         "tests": null,
         "error": "HTTP Error 503: Service Unavailable",
         "source": "scheduled"
+      },
+      {
+        "timestamp": 1793846480213,
+        "banned": null,
+        "exists": false,
+        "tests": null,
+        "error": "API returned non-JSON (likely temporary error)",
+        "source": "manual"
       }
     ],
     "wollowg857": [
@@ -37446,7 +37470,7 @@
       }
     ]
   },
-  "lastUpdated": 1793846124304,
+  "lastUpdated": 1793846480213,
   "trackedAccounts": [
     "keepsayinitkris",
     "keptsayinitkris",
