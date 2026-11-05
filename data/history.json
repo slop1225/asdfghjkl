@@ -11634,6 +11634,27 @@
         "tests": null,
         "error": "API returned non-JSON (likely temporary error)",
         "source": "manual"
+      },
+      {
+        "timestamp": 1793853494456,
+        "banned": false,
+        "exists": true,
+        "tests": {
+          "search": "_implied_good",
+          "typeahead": true,
+          "ghost": {
+            "ban": false,
+            "tweet": "2118136008214749206",
+            "in_reply_to": "2118172782488121671"
+          },
+          "more_replies": {
+            "ban": false,
+            "tweet": "2118136008214749206",
+            "in_reply_to": "2118172782488121671"
+          }
+        },
+        "error": null,
+        "source": "scheduled"
       }
     ],
     "insanejarona": [
@@ -23270,6 +23291,14 @@
         "tests": null,
         "error": "API returned non-JSON (likely temporary error)",
         "source": "manual"
+      },
+      {
+        "timestamp": 1793853494456,
+        "banned": null,
+        "exists": false,
+        "tests": null,
+        "error": "The read operation timed out",
+        "source": "scheduled"
       }
     ],
     "keptsayinitkris": [
@@ -34945,6 +34974,27 @@
         "tests": null,
         "error": "API returned non-JSON (likely temporary error)",
         "source": "manual"
+      },
+      {
+        "timestamp": 1793853494456,
+        "banned": false,
+        "exists": true,
+        "tests": {
+          "search": "_implied_good",
+          "typeahead": true,
+          "ghost": {
+            "ban": false,
+            "tweet": "2115389986698592561",
+            "in_reply_to": "2115400513554653269"
+          },
+          "more_replies": {
+            "ban": false,
+            "tweet": "2115389986698592561",
+            "in_reply_to": "2115400513554653269"
+          }
+        },
+        "error": null,
+        "source": "scheduled"
       }
     ],
     "wollowg857": [
@@ -37782,7 +37832,7 @@
       }
     ]
   },
-  "lastUpdated": 1793852235020,
+  "lastUpdated": 1793853494456,
   "trackedAccounts": [
     "keepsayinitkris",
     "keptsayinitkris",
