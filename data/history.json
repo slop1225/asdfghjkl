@@ -13257,6 +13257,27 @@
         "tests": null,
         "error": "HTTP Error 503: Service Unavailable",
         "source": "scheduled"
+      },
+      {
+        "timestamp": 1794073341715,
+        "banned": false,
+        "exists": true,
+        "tests": {
+          "search": "_implied_good",
+          "typeahead": true,
+          "ghost": {
+            "ban": false,
+            "tweet": "2119087865728540857",
+            "in_reply_to": "2119090494001287260"
+          },
+          "more_replies": {
+            "ban": false,
+            "tweet": "2119087865728540857",
+            "in_reply_to": "2119090494001287260"
+          }
+        },
+        "error": null,
+        "source": "scheduled"
       }
     ],
     "insanejarona": [
@@ -26450,6 +26471,27 @@
         "exists": false,
         "tests": null,
         "error": "HTTP Error 500: Internal Server Error",
+        "source": "scheduled"
+      },
+      {
+        "timestamp": 1794073341715,
+        "banned": false,
+        "exists": true,
+        "tests": {
+          "search": "_implied_good",
+          "typeahead": true,
+          "ghost": {
+            "ban": false,
+            "tweet": "2119096875915886761",
+            "in_reply_to": "2119101630406598766"
+          },
+          "more_replies": {
+            "ban": false,
+            "tweet": "2119096875915886761",
+            "in_reply_to": "2119101630406598766"
+          }
+        },
+        "error": null,
         "source": "scheduled"
       }
     ],
@@ -39749,6 +39791,27 @@
         "tests": null,
         "error": "HTTP Error 503: Service Unavailable",
         "source": "scheduled"
+      },
+      {
+        "timestamp": 1794073341715,
+        "banned": false,
+        "exists": true,
+        "tests": {
+          "search": "_implied_good",
+          "typeahead": true,
+          "ghost": {
+            "ban": null,
+            "tweet": null,
+            "in_reply_to": null
+          },
+          "more_replies": {
+            "ban": null,
+            "tweet": null,
+            "in_reply_to": null
+          }
+        },
+        "error": null,
+        "source": "scheduled"
       }
     ],
     "wollowg857": [
@@ -42586,7 +42649,7 @@
       }
     ]
   },
-  "lastUpdated": 1794070939770,
+  "lastUpdated": 1794073341715,
   "trackedAccounts": [
     "keepsayinitkris",
     "keptsayinitkris",
