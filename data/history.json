@@ -13824,6 +13824,27 @@
         },
         "error": null,
         "source": "scheduled"
+      },
+      {
+        "timestamp": 1794150212423,
+        "banned": false,
+        "exists": true,
+        "tests": {
+          "search": "_implied_good",
+          "typeahead": true,
+          "ghost": {
+            "ban": false,
+            "tweet": "2119392457892958226",
+            "in_reply_to": "2119439206594326562"
+          },
+          "more_replies": {
+            "ban": false,
+            "tweet": "2119392457892958226",
+            "in_reply_to": "2119439206594326562"
+          }
+        },
+        "error": null,
+        "source": "scheduled"
       }
     ],
     "insanejarona": [
@@ -27558,6 +27579,14 @@
         "exists": false,
         "tests": null,
         "error": null,
+        "source": "scheduled"
+      },
+      {
+        "timestamp": 1794150212423,
+        "banned": null,
+        "exists": false,
+        "tests": null,
+        "error": "HTTP Error 500: Internal Server Error",
         "source": "scheduled"
       }
     ],
@@ -41411,6 +41440,27 @@
         },
         "error": null,
         "source": "scheduled"
+      },
+      {
+        "timestamp": 1794150212423,
+        "banned": false,
+        "exists": true,
+        "tests": {
+          "search": "_implied_good",
+          "typeahead": true,
+          "ghost": {
+            "ban": null,
+            "tweet": null,
+            "in_reply_to": null
+          },
+          "more_replies": {
+            "ban": null,
+            "tweet": null,
+            "in_reply_to": null
+          }
+        },
+        "error": null,
+        "source": "scheduled"
       }
     ],
     "wollowg857": [
@@ -44248,7 +44298,7 @@
       }
     ]
   },
-  "lastUpdated": 1794147747297,
+  "lastUpdated": 1794150212423,
   "trackedAccounts": [
     "keepsayinitkris",
     "keptsayinitkris",
