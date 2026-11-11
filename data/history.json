@@ -15093,6 +15093,27 @@
         },
         "error": null,
         "source": "scheduled"
+      },
+      {
+        "timestamp": 1794361914192,
+        "banned": false,
+        "exists": true,
+        "tests": {
+          "search": "_implied_good",
+          "typeahead": true,
+          "ghost": {
+            "ban": false,
+            "tweet": "2120016881910415645",
+            "in_reply_to": "2120274375249100932"
+          },
+          "more_replies": {
+            "ban": false,
+            "tweet": "2120016881910415645",
+            "in_reply_to": "2120274375249100932"
+          }
+        },
+        "error": null,
+        "source": "scheduled"
       }
     ],
     "insanejarona": [
@@ -30095,6 +30116,14 @@
             "in_reply_to": "2119101630406598766"
           }
         },
+        "error": null,
+        "source": "scheduled"
+      },
+      {
+        "timestamp": 1794361914192,
+        "banned": null,
+        "exists": false,
+        "tests": null,
         "error": null,
         "source": "scheduled"
       }
@@ -45166,6 +45195,27 @@
         },
         "error": null,
         "source": "scheduled"
+      },
+      {
+        "timestamp": 1794361914192,
+        "banned": false,
+        "exists": true,
+        "tests": {
+          "search": "_implied_good",
+          "typeahead": true,
+          "ghost": {
+            "ban": false,
+            "tweet": "2118963538253561901",
+            "in_reply_to": "2118978590155125157"
+          },
+          "more_replies": {
+            "ban": false,
+            "tweet": "2118963538253561901",
+            "in_reply_to": "2118978590155125157"
+          }
+        },
+        "error": null,
+        "source": "scheduled"
       }
     ],
     "wollowg857": [
@@ -48003,7 +48053,7 @@
       }
     ]
   },
-  "lastUpdated": 1794358186254,
+  "lastUpdated": 1794361914192,
   "trackedAccounts": [
     "keepsayinitkris",
     "keptsayinitkris",
