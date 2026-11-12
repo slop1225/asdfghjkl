@@ -15913,6 +15913,27 @@
         },
         "error": null,
         "source": "scheduled"
+      },
+      {
+        "timestamp": 1794518857785,
+        "banned": false,
+        "exists": true,
+        "tests": {
+          "search": "_implied_good",
+          "typeahead": true,
+          "ghost": {
+            "ban": false,
+            "tweet": "2120948116681593315",
+            "in_reply_to": "2120983558244184280"
+          },
+          "more_replies": {
+            "ban": false,
+            "tweet": "2120948116681593315",
+            "in_reply_to": "2120983558244184280"
+          }
+        },
+        "error": null,
+        "source": "scheduled"
       }
     ],
     "insanejarona": [
@@ -31736,6 +31757,14 @@
           }
         },
         "error": null,
+        "source": "scheduled"
+      },
+      {
+        "timestamp": 1794518857785,
+        "banned": null,
+        "exists": false,
+        "tests": null,
+        "error": "HTTP Error 500: Internal Server Error",
         "source": "scheduled"
       }
     ],
@@ -47613,6 +47642,14 @@
         },
         "error": null,
         "source": "scheduled"
+      },
+      {
+        "timestamp": 1794518857785,
+        "banned": null,
+        "exists": false,
+        "tests": null,
+        "error": "HTTP Error 503: Service Unavailable",
+        "source": "scheduled"
       }
     ],
     "wollowg857": [
@@ -50450,7 +50487,7 @@
       }
     ]
   },
-  "lastUpdated": 1794515543061,
+  "lastUpdated": 1794518857785,
   "trackedAccounts": [
     "keepsayinitkris",
     "keptsayinitkris",
