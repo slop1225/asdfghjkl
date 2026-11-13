@@ -16000,6 +16000,27 @@
         "tests": null,
         "error": "HTTP Error 503: Service Unavailable",
         "source": "scheduled"
+      },
+      {
+        "timestamp": 1794537529384,
+        "banned": false,
+        "exists": true,
+        "tests": {
+          "search": "_implied_good",
+          "typeahead": true,
+          "ghost": {
+            "ban": false,
+            "tweet": "2120927557293953270",
+            "in_reply_to": "2121009119448699379"
+          },
+          "more_replies": {
+            "ban": false,
+            "tweet": "2120927557293953270",
+            "in_reply_to": "2121009119448699379"
+          }
+        },
+        "error": null,
+        "source": "scheduled"
       }
     ],
     "insanejarona": [
@@ -31871,6 +31892,14 @@
         "exists": false,
         "tests": null,
         "error": "HTTP Error 503: Service Unavailable",
+        "source": "scheduled"
+      },
+      {
+        "timestamp": 1794537529384,
+        "banned": null,
+        "exists": false,
+        "tests": null,
+        "error": null,
         "source": "scheduled"
       }
     ],
@@ -47809,6 +47838,27 @@
         "tests": null,
         "error": "HTTP Error 503: Service Unavailable",
         "source": "scheduled"
+      },
+      {
+        "timestamp": 1794537529384,
+        "banned": false,
+        "exists": true,
+        "tests": {
+          "search": "_implied_good",
+          "typeahead": true,
+          "ghost": {
+            "ban": false,
+            "tweet": "2118963538253561901",
+            "in_reply_to": "2118978590155125157"
+          },
+          "more_replies": {
+            "ban": false,
+            "tweet": "2118963538253561901",
+            "in_reply_to": "2118978590155125157"
+          }
+        },
+        "error": null,
+        "source": "scheduled"
       }
     ],
     "wollowg857": [
@@ -50646,7 +50696,7 @@
       }
     ]
   },
-  "lastUpdated": 1794534697008,
+  "lastUpdated": 1794537529384,
   "trackedAccounts": [
     "keepsayinitkris",
     "keptsayinitkris",
