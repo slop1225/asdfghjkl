@@ -18981,6 +18981,27 @@
         },
         "error": null,
         "source": "scheduled"
+      },
+      {
+        "timestamp": 1795043781088,
+        "banned": false,
+        "exists": true,
+        "tests": {
+          "search": "_implied_good",
+          "typeahead": true,
+          "ghost": {
+            "ban": false,
+            "tweet": "2123144622436139402",
+            "in_reply_to": "2123170440310858156"
+          },
+          "more_replies": {
+            "ban": false,
+            "tweet": "2123144622436139402",
+            "in_reply_to": "2123170440310858156"
+          }
+        },
+        "error": null,
+        "source": "scheduled"
       }
     ],
     "insanejarona": [
@@ -37768,6 +37789,27 @@
         "exists": false,
         "tests": null,
         "error": "HTTP Error 500: Internal Server Error",
+        "source": "scheduled"
+      },
+      {
+        "timestamp": 1795043781088,
+        "banned": false,
+        "exists": true,
+        "tests": {
+          "search": "_implied_good",
+          "typeahead": true,
+          "ghost": {
+            "ban": false,
+            "tweet": "2122910454112489568",
+            "in_reply_to": "2122911344777130378"
+          },
+          "more_replies": {
+            "ban": false,
+            "tweet": "2122910454112489568",
+            "in_reply_to": "2123191118011543924"
+          }
+        },
+        "error": null,
         "source": "scheduled"
       }
     ],
@@ -56713,6 +56755,27 @@
         "tests": null,
         "error": "HTTP Error 500: Internal Server Error",
         "source": "scheduled"
+      },
+      {
+        "timestamp": 1795043781088,
+        "banned": false,
+        "exists": true,
+        "tests": {
+          "search": "_implied_good",
+          "typeahead": true,
+          "ghost": {
+            "ban": false,
+            "tweet": "2118963538253561901",
+            "in_reply_to": "2118978590155125157"
+          },
+          "more_replies": {
+            "ban": false,
+            "tweet": "2118963538253561901",
+            "in_reply_to": "2118978590155125157"
+          }
+        },
+        "error": null,
+        "source": "scheduled"
       }
     ],
     "wollowg857": [
@@ -59550,7 +59613,7 @@
       }
     ]
   },
-  "lastUpdated": 1795040200669,
+  "lastUpdated": 1795043781088,
   "trackedAccounts": [
     "keepsayinitkris",
     "keptsayinitkris",
