@@ -18889,6 +18889,27 @@
         },
         "error": null,
         "source": "scheduled"
+      },
+      {
+        "timestamp": 1795026545259,
+        "banned": false,
+        "exists": true,
+        "tests": {
+          "search": "_implied_good",
+          "typeahead": true,
+          "ghost": {
+            "ban": false,
+            "tweet": "2123070678727594152",
+            "in_reply_to": "2123104335605252530"
+          },
+          "more_replies": {
+            "ban": false,
+            "tweet": "2123070678727594152",
+            "in_reply_to": "2123104335605252530"
+          }
+        },
+        "error": null,
+        "source": "scheduled"
       }
     ],
     "insanejarona": [
@@ -37567,6 +37588,27 @@
       },
       {
         "timestamp": 1795023473020,
+        "banned": false,
+        "exists": true,
+        "tests": {
+          "search": "_implied_good",
+          "typeahead": true,
+          "ghost": {
+            "ban": false,
+            "tweet": "2123010585998610779",
+            "in_reply_to": "2123075410087076163"
+          },
+          "more_replies": {
+            "ban": false,
+            "tweet": "2123010585998610779",
+            "in_reply_to": "2123075410087076163"
+          }
+        },
+        "error": null,
+        "source": "scheduled"
+      },
+      {
+        "timestamp": 1795026545259,
         "banned": false,
         "exists": true,
         "tests": {
@@ -56437,6 +56479,27 @@
         },
         "error": null,
         "source": "scheduled"
+      },
+      {
+        "timestamp": 1795026545259,
+        "banned": false,
+        "exists": true,
+        "tests": {
+          "search": "_implied_good",
+          "typeahead": true,
+          "ghost": {
+            "ban": null,
+            "tweet": null,
+            "in_reply_to": null
+          },
+          "more_replies": {
+            "ban": null,
+            "tweet": null,
+            "in_reply_to": null
+          }
+        },
+        "error": null,
+        "source": "scheduled"
       }
     ],
     "wollowg857": [
@@ -59274,7 +59337,7 @@
       }
     ]
   },
-  "lastUpdated": 1795023473020,
+  "lastUpdated": 1795026545259,
   "trackedAccounts": [
     "keepsayinitkris",
     "keptsayinitkris",
