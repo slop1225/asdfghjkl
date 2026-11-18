@@ -18960,6 +18960,27 @@
         "tests": null,
         "error": "HTTP Error 500: Internal Server Error",
         "source": "scheduled"
+      },
+      {
+        "timestamp": 1795040200669,
+        "banned": false,
+        "exists": true,
+        "tests": {
+          "search": "_implied_good",
+          "typeahead": true,
+          "ghost": {
+            "ban": false,
+            "tweet": "2123144622436139402",
+            "in_reply_to": "2123170440310858156"
+          },
+          "more_replies": {
+            "ban": false,
+            "tweet": "2123144622436139402",
+            "in_reply_to": "2123170440310858156"
+          }
+        },
+        "error": null,
+        "source": "scheduled"
       }
     ],
     "insanejarona": [
@@ -37739,6 +37760,14 @@
           }
         },
         "error": null,
+        "source": "scheduled"
+      },
+      {
+        "timestamp": 1795040200669,
+        "banned": null,
+        "exists": false,
+        "tests": null,
+        "error": "HTTP Error 500: Internal Server Error",
         "source": "scheduled"
       }
     ],
@@ -56676,6 +56705,14 @@
         },
         "error": null,
         "source": "scheduled"
+      },
+      {
+        "timestamp": 1795040200669,
+        "banned": null,
+        "exists": false,
+        "tests": null,
+        "error": "HTTP Error 500: Internal Server Error",
+        "source": "scheduled"
       }
     ],
     "wollowg857": [
@@ -59513,7 +59550,7 @@
       }
     ]
   },
-  "lastUpdated": 1795036801259,
+  "lastUpdated": 1795040200669,
   "trackedAccounts": [
     "keepsayinitkris",
     "keptsayinitkris",
