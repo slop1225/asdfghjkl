@@ -18571,6 +18571,27 @@
         },
         "error": null,
         "source": "scheduled"
+      },
+      {
+        "timestamp": 1794961868361,
+        "banned": false,
+        "exists": true,
+        "tests": {
+          "search": "_implied_good",
+          "typeahead": true,
+          "ghost": {
+            "ban": null,
+            "tweet": null,
+            "in_reply_to": null
+          },
+          "more_replies": {
+            "ban": null,
+            "tweet": null,
+            "in_reply_to": null
+          }
+        },
+        "error": null,
+        "source": "scheduled"
       }
     ],
     "insanejarona": [
@@ -36932,6 +36953,27 @@
             "ban": null,
             "tweet": null,
             "in_reply_to": null
+          }
+        },
+        "error": null,
+        "source": "scheduled"
+      },
+      {
+        "timestamp": 1794961868361,
+        "banned": false,
+        "exists": true,
+        "tests": {
+          "search": "_implied_good",
+          "typeahead": true,
+          "ghost": {
+            "ban": false,
+            "tweet": "2122378343307944289",
+            "in_reply_to": "2122660562718851495"
+          },
+          "more_replies": {
+            "ban": false,
+            "tweet": "2122378343307944289",
+            "in_reply_to": "2122660562718851495"
           }
         },
         "error": null,
@@ -55457,6 +55499,27 @@
         },
         "error": null,
         "source": "scheduled"
+      },
+      {
+        "timestamp": 1794961868361,
+        "banned": false,
+        "exists": true,
+        "tests": {
+          "search": "_implied_good",
+          "typeahead": true,
+          "ghost": {
+            "ban": null,
+            "tweet": null,
+            "in_reply_to": null
+          },
+          "more_replies": {
+            "ban": null,
+            "tweet": null,
+            "in_reply_to": null
+          }
+        },
+        "error": null,
+        "source": "scheduled"
       }
     ],
     "wollowg857": [
@@ -58294,7 +58357,7 @@
       }
     ]
   },
-  "lastUpdated": 1794958213555,
+  "lastUpdated": 1794961868361,
   "trackedAccounts": [
     "keepsayinitkris",
     "keptsayinitkris",
