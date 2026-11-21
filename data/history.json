@@ -19128,6 +19128,14 @@
         },
         "error": null,
         "source": "scheduled"
+      },
+      {
+        "timestamp": 1795221480494,
+        "banned": null,
+        "exists": false,
+        "tests": null,
+        "error": null,
+        "source": "scheduled"
       }
     ],
     "insanejarona": [
@@ -38045,6 +38053,27 @@
       },
       {
         "timestamp": 1795200993597,
+        "banned": false,
+        "exists": true,
+        "tests": {
+          "search": "_implied_good",
+          "typeahead": true,
+          "ghost": {
+            "ban": false,
+            "tweet": "2123809249931473280",
+            "in_reply_to": "2123843653156167831"
+          },
+          "more_replies": {
+            "ban": false,
+            "tweet": "2123809249931473280",
+            "in_reply_to": "2123843653156167831"
+          }
+        },
+        "error": null,
+        "source": "scheduled"
+      },
+      {
+        "timestamp": 1795221480494,
         "banned": false,
         "exists": true,
         "tests": {
@@ -57154,6 +57183,27 @@
         },
         "error": null,
         "source": "scheduled"
+      },
+      {
+        "timestamp": 1795221480494,
+        "banned": false,
+        "exists": true,
+        "tests": {
+          "search": "_implied_good",
+          "typeahead": true,
+          "ghost": {
+            "ban": null,
+            "tweet": null,
+            "in_reply_to": null
+          },
+          "more_replies": {
+            "ban": null,
+            "tweet": null,
+            "in_reply_to": null
+          }
+        },
+        "error": null,
+        "source": "scheduled"
       }
     ],
     "wollowg857": [
@@ -59991,7 +60041,7 @@
       }
     ]
   },
-  "lastUpdated": 1795200993597,
+  "lastUpdated": 1795221480494,
   "trackedAccounts": [
     "keepsayinitkris",
     "keptsayinitkris",
