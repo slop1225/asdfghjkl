@@ -19136,6 +19136,14 @@
         "tests": null,
         "error": null,
         "source": "scheduled"
+      },
+      {
+        "timestamp": 1795246944223,
+        "banned": null,
+        "exists": false,
+        "tests": null,
+        "error": "The read operation timed out",
+        "source": "scheduled"
       }
     ],
     "insanejarona": [
@@ -38079,6 +38087,27 @@
         "tests": {
           "search": "_implied_good",
           "typeahead": true,
+          "ghost": {
+            "ban": false,
+            "tweet": "2123809249931473280",
+            "in_reply_to": "2123843653156167831"
+          },
+          "more_replies": {
+            "ban": false,
+            "tweet": "2123809249931473280",
+            "in_reply_to": "2123843653156167831"
+          }
+        },
+        "error": null,
+        "source": "scheduled"
+      },
+      {
+        "timestamp": 1795246944223,
+        "banned": false,
+        "exists": true,
+        "tests": {
+          "search": "_error",
+          "typeahead": "_error",
           "ghost": {
             "ban": false,
             "tweet": "2123809249931473280",
@@ -57204,6 +57233,14 @@
         },
         "error": null,
         "source": "scheduled"
+      },
+      {
+        "timestamp": 1795246944223,
+        "banned": null,
+        "exists": false,
+        "tests": null,
+        "error": "HTTP Error 500: Internal Server Error",
+        "source": "scheduled"
       }
     ],
     "wollowg857": [
@@ -60041,7 +60078,7 @@
       }
     ]
   },
-  "lastUpdated": 1795221480494,
+  "lastUpdated": 1795246944223,
   "trackedAccounts": [
     "keepsayinitkris",
     "keptsayinitkris",
